@@ -25,10 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        aereopuerto.cpp
+        aereopuerto.cpp \
+    elementos.cpp
 
 HEADERS += \
-        aereopuerto.h
+        aereopuerto.h \
+    elementos.h
 
 FORMS += \
         aereopuerto.ui

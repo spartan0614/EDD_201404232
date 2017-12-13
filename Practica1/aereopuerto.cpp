@@ -12,3 +12,8 @@ aereopuerto::~aereopuerto()
 {
     delete ui;
 }
+
+void aereopuerto::on_btnIniciar_clicked()
+{
+    //Inicio de la cola de aviones
+}
