@@ -77,7 +77,6 @@ char aereopuerto::BuscarLetra(){
          //Si llego hasta aquí es porque la letra no se encuentra en la lista
          return letra;
      }
-
 }
 
 void aereopuerto::on_btnSiguiente_clicked()

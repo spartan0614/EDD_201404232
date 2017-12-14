@@ -61,6 +61,7 @@ public:
         lblEscritorios = new QLabel(centralWidget);
         lblEscritorios->setObjectName(QStringLiteral("lblEscritorios"));
         lblEscritorios->setGeometry(QRect(154, 160, 721, 731));
+        lblEscritorios->setScaledContents(true);
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
         groupBox->setGeometry(QRect(1250, 0, 451, 161));

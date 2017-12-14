@@ -36,6 +36,13 @@ Escritorio::Escritorio(char id, int estado, int documentos, int faltante){
     this->anterior = NULL;
 }
 
+Estacion::Estacion(int id, int estado, int faltante){
+    this->id = id;
+    this->estado = estado;
+    this->faltante = faltante;
+    this->siguiente = NULL;
+}
+
 //*****************************************     A V I O N E S     **********************************************
 void ColaDoble::Insertar(int id,int tipo, int pasajeros, int tiempo_desbordaje, int tiempo_mantnimento){
     Avion *nuevo = new Avion(id,tipo, pasajeros, tiempo_desbordaje,tiempo_mantnimento);
@@ -142,13 +149,14 @@ void ColaPasajeros::Insertar(int id, int equipaje, int documentos, int tiempo_re
         }
         tmp->siguiente = nuevo;
     }
+    size++;
  }
 
  Pasajero *ColaPasajeros::Eliminar(){
 
  }
 
- //************************************************  E S C R I T O R I O S  **********************************************
+ //***************************************************  E S C R I T O R I O S  ****************************************************
  void DobleOrdenada::Insertar(char id, int estado, int documentos, int faltante){
     Escritorio *nuevo = new Escritorio(id, estado, documentos, faltante);
     if(primero == NULL){
@@ -268,10 +276,76 @@ void DobleOrdenada::Graficar(){
 
         system("dot -Tpng escritorios.txt -o Escritorios.png");
     }
-
 }
 
+//***************************************************   E S T A C I O N E S   ****************************************************
+void Simple::Insertar(int estado, int faltante){
+    Estacion *nuevo = new Estacion(estado,faltante);
+    if(primero == NULL){
+        primero = nuevo;
+    }else{
+        Estacion *tmp = primero;
+        while (tmp->siguiente != NULL) {
+            tmp = tmp->siguiente;
+        }
+        tmp->siguiente = nuevo;
+    }
+}
 
+void Simple::Graficar(){
+    FILE *archivo;
+    archivo = fopen("estaciones.txt", "w");
+    if(archivo == NULL){
+        exit(-1);
+    }
+    Estacion *aux = primero;
+
+    if(primero == NULL){
+        fprintf(archivo,"No existen nodos en la lsita de personas");
+    }else{
+        fprintf(archivo,"digraph Estaciones{\n");
+        fprintf(archivo,"rankdir=LR;\n");
+        fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
+        fprintf(archivo,"node[shape=record,style=filled,fillcolor=seashell2,fontname = \"Bitstream Vera Sans\"];\n");
+        //datos de la lista doble
+        fprintf(archivo,"nodo%d[label=\"Tipo:%s \\l Pasajeros:%d \\l Turnos \\l desabordaje:%d \\l\"];\n",aux->id,getTipo(aux->tipo),aux->pasajeros,aux->tiempo_desbordaje);
+        if(aux->siguiente == NULL){
+
+        }else{
+            aux = aux->siguiente;
+            while(aux != NULL){
+                fprintf(archivo,"nodo%d[label=\"Tipo:%s \\l Pasajeros:%d \\l Turnos \\l desabordaje:%d \\l\"];\n",aux->id,getTipo(aux->tipo),aux->pasajeros,aux->tiempo_desbordaje);
+                aux = aux->siguiente;
+            }
+        }
+        //conexiones con punteros de los nodos
+        fprintf(archivo,"nodo%d",aux2->id);
+        if(aux2->siguiente == NULL){
+            //Si solo hay un nodo en la lista
+        }else{
+            aux2 = aux2->siguiente;
+            while (aux2 != NULL) {
+                 fprintf(archivo,"->nodo%d",aux2->id);
+                 aux2 = aux2->siguiente;
+            }
+
+            fprintf(archivo,";\n");
+
+            while (temporal != primero){
+               fprintf(archivo,"nodo%d->",temporal->id);
+               temporal = temporal->anterior;
+            }
+            fprintf(archivo,"nodo%d",primero->id);
+
+            fprintf(archivo,";\n");
+        }
+
+        fprintf(archivo,"}\n");
+        fclose(archivo);
+
+        system("dot -Tpng estaciones.txt -o Estaciones.png");
+    }
+}
 
 
 
