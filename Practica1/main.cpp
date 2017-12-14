@@ -9,7 +9,5 @@ int main(int argc, char *argv[])
     aereopuerto w;
     w.show();
 
-
-
     return a.exec();
 }

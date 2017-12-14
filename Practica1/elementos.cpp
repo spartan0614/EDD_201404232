@@ -49,7 +49,18 @@ void ColaDoble::Insertar(int id,int tipo, int pasajeros, int tiempo_desbordaje, 
 }
 
  Avion *ColaDoble::Eliminar(){
-
+    if(primero == NULL){
+        //No hay nada que eliminar
+    }else if(primero == ultimo){
+        Avion *tmp = primero;
+        primero = ultimo = NULL;
+        return tmp;
+    }else{
+        Avion *tmp = primero;
+        primero = primero->siguiente;
+        primero->anterior = NULL;
+        return tmp;
+    }
  }
 
 void ColaDoble::Graficar(){
@@ -68,7 +79,7 @@ void ColaDoble::Graficar(){
         fprintf(archivo,"rankdir=LR;\n");
         fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
         fprintf(archivo,"node[shape=record,style=filled,fillcolor=seashell2,fontname = \"Bitstream Vera Sans\"];\n");
-        //lista de datos de la lista
+        //datos de la lista doble
         fprintf(archivo,"nodo%d[label=\"Tipo:%s \\l Pasajeros:%d \\l Turnos \\l desabordaje:%d \\l\"];\n",aux->id,getTipo(aux->tipo),aux->pasajeros,aux->tiempo_desbordaje);
         if(aux->siguiente == NULL){
 
@@ -120,8 +131,8 @@ char *ColaDoble::getTipo(int numero){
 
 
 //****************************************************   P A S A J E R O S   *****************************************************
-void ColaPasajeros::Insertar(int equipaje, int documentos, int tiempo_registro){
-    Pasajero *nuevo = new Pasajero(equipaje,documentos,tiempo_registro);
+void ColaPasajeros::Insertar(int id, int equipaje, int documentos, int tiempo_registro){
+    Pasajero *nuevo = new Pasajero(id,equipaje,documentos,tiempo_registro);
     if(primero == NULL){
         primero = nuevo;
     }else{
@@ -182,72 +193,75 @@ void DobleOrdenada::Graficar(){
         fprintf(archivo,"rankdir=TB;\n");
         fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
         fprintf(archivo,"node[shape = record, style = filled, fillcolor = seashell2, fontname = \"Bitstream Vera Sans\"];\n");
-
         fprintf(archivo,"{\n");
         fprintf(archivo,"rank=min;\n");
-
-        //Doblemente ordenada
-        //Lista de escritorios ordenada
-        fprintf(archivo,"nodo%s[label=\"%s \\n Estado:%d \\l Documentos:%d\"];\n",aux->id, aux->id, aux->estado, aux->documentos);
+        //datos de la lista doble
+        fprintf(archivo,"nodo%c[label=\"%c \\n Estado:%d \\l\"];\n",aux->id,aux->id,aux->estado);
         if(aux->siguiente == NULL){
 
         }else{
             aux = aux->siguiente;
-            while(aux != NULL){
-                fprintf(archivo,"nodo%s[label=\"%s \\n Estado:%d \\l Documentos:%d\"];\n",aux->id, aux->id, aux->estado, aux->documentos);
-                aux = aux->siguiente;
+            while(aux != NULL) {
+                 fprintf(archivo,"nodo%c[label=\"%c \\n Estado:%d \\l\"];\n",aux->id,aux->id,aux->estado);
+                 aux =  aux->siguiente;
             }
         }
         fprintf(archivo,"};\n");
+        //conexiones con punteros de los nodos escritorio
         aux = primero;
-        //punteros doblemente enlazada
-        fprintf(archivo,"nodo%s",aux->id);
+        fprintf(archivo,"nodo%c", aux->id);
         if(aux->siguiente == NULL){
-            //Si solo hay un nodo en la lista
+
         }else{
             aux = aux->siguiente;
-            while (aux != NULL) {
-                 fprintf(archivo,"->nodo%s",aux->id);
-                 aux = aux->siguiente;
+            while(aux != NULL) {
+                fprintf(archivo,"->nodo%c",aux->id);
+                aux = aux->siguiente;
             }
-
             fprintf(archivo,";\n");
 
-            while (aux2 != primero){
-               fprintf(archivo,"nodo%s->",aux2->id);
-               aux2 = aux2->anterior;
+            while(aux2 != primero) {
+                fprintf(archivo,"nodo%c->",aux2->id);
+                aux2 = aux2->anterior;
             }
-            fprintf(archivo,"nodo%s",aux2->id);
-
+            fprintf(archivo,"nodo%c",primero->id);
             fprintf(archivo,";\n");
         }
-        //fin de punteros de doblemente enlazada
+        //fin de conexion de los punteros de los nodos escritorio
 
-        //lista de eventos
+        //personas de cada escritorio
         aux = primero;
-        while( aux != NULL){
-            Pasajero *persona_aux = aux->cola_pasajeros->primero;
-            if(persona_aux != NULL){
-                while(persona_aux != NULL){
-                    fprintf(archivo,"nodo%d[label=\"Pasajero:%d \\l Maletas:%d \\l Documentos:%d \\n Duración: %s \"];\n",);
-                    persona_aux = persona_aux->siguiente;
+        while(aux != NULL){
+            Pasajero *tmp = aux->cola_pasajeros->primero;
+            if(tmp == NULL){
+
+            }else{
+                while(tmp != NULL) {
+                    fprintf(archivo,"nodo%d[label=\"Pasajero:%d \\l Maletas:%d \\l Documentos:%d\"];\n", tmp->id,tmp->id,tmp->equipaje,tmp->documentos);
+                    tmp = tmp->siguiente;
                 }
             }
             aux = aux->siguiente;
         }
+        //fin de listado de personas de cada escritorio
 
+        //Enlazando Escritorios con su cola de personas
+        aux = primero;
+        while(aux != NULL) {
+            Pasajero *tmp = aux->cola_pasajeros->primero;
+            fprintf(archivo,"nodo%c",aux->id);
+            if(tmp == NULL){
 
-        //enlazando eventos con día.
-        do{
-            Node<Evento> *evento_aux = aux->valor.listEventos->primero;
-            fprintf(archivo,"nodo%d%d%d",aux->valor.dia,aux->valor.mes,aux->valor.anio);
-            while (evento_aux != NULL){
-                fprintf(archivo,"->nodo%d%d%d%d",aux->valor.dia,aux->valor.mes,aux->valor.anio,evento_aux->valor.horaInicio);
-                evento_aux = evento_aux->siguiente;
+            }else{
+                while(tmp != NULL){
+                    fprintf(archivo,"->nodo%d",tmp->id);
+                    tmp = tmp->siguiente;
+                }
             }
             fprintf(archivo, ";\n");
             aux = aux->siguiente;
-        }while(aux != listDias->primero);
+        }
+        //Fin de enlaces
 
         fprintf(archivo,"}\n");
         fclose(archivo);

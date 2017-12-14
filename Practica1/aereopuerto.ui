@@ -26,6 +26,9 @@
     <property name="text">
      <string/>
     </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="lblPasajeros">
     <property name="geometry">
@@ -114,7 +117,7 @@
       <string>Iniciar</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="lineAviones">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -124,7 +127,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="lineEstaciones">
      <property name="geometry">
       <rect>
        <x>170</x>
@@ -134,7 +137,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_3">
+    <widget class="QLineEdit" name="lineEscritorios">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -144,7 +147,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_4">
+    <widget class="QLineEdit" name="lineTurnos">
      <property name="geometry">
       <rect>
        <x>170</x>

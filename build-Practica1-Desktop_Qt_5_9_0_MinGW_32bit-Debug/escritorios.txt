@@ -1,0 +1,26 @@
+digraph Escritorios{
+rankdir=TB;
+fontname = "Bitstream Vera Sans"
+node[shape = record, style = filled, fillcolor = seashell2, fontname = "Bitstream Vera Sans"];
+{
+rank=min;
+nodoB[label="B \n Estado:1 \l"];
+nodoI[label="I \n Estado:1 \l"];
+nodoK[label="K \n Estado:1 \l"];
+nodoM[label="M \n Estado:1 \l"];
+nodoQ[label="Q \n Estado:1 \l"];
+nodoR[label="R \n Estado:1 \l"];
+nodoU[label="U \n Estado:1 \l"];
+nodoW[label="W \n Estado:1 \l"];
+};
+nodoB->nodoI->nodoK->nodoM->nodoQ->nodoR->nodoU->nodoW;
+nodoW->nodoU->nodoR->nodoQ->nodoM->nodoK->nodoI->nodoB;
+nodoB;
+nodoI;
+nodoK;
+nodoM;
+nodoQ;
+nodoR;
+nodoU;
+nodoW;
+}

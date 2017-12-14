@@ -51,7 +51,7 @@ void aereopuerto::on_btnIniciar_clicked()
     ui->lblAviones->setPixmap(a);
 
     //Inicio de la lista de escritorios
-
+    
 
 }
 

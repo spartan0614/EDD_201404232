@@ -20,6 +20,8 @@ public:
 private slots:
     void on_btnIniciar_clicked();
 
+    void on_btnSiguiente_clicked();
+
 private:
     Ui::aereopuerto *ui;
 };
