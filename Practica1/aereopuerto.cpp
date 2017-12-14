@@ -51,7 +51,35 @@ void aereopuerto::on_btnIniciar_clicked()
     ui->lblAviones->setPixmap(a);
 
     //Inicio de la lista de escritorios
+    int noEscritorios = ui->lineEscritorios->text().toInt();
+    for(int j = 0; j < noEscritorios; j++){
+        char letra = BuscarLetra();
+        listaEscritorios->Insertar(letra,0,0,0);
+    }
+    listaEscritorios->Graficar();
+    QPixmap b("Escritorios.png");
+    ui->lblAviones->setPixmap(b);
 
+}
+
+char aereopuerto::BuscarLetra(){
+     srand(time(NULL));
+     char letra = rand()%26+65;
+
+     Escritorio *tmp = listaEscritorios->primero;
+
+     if(tmp == NULL){
+        return letra;
+     }else{
+         while(tmp != NULL) {
+            if(tmp->id == letra){
+                return BuscarLetra();
+            }
+            tmp = tmp->siguiente;
+         }
+         //Si llego hasta aquí es porque la letra no se encuentra en la lista
+         return letra;
+     }
 
 }
 

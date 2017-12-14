@@ -16,6 +16,10 @@ public:
     ~aereopuerto();
 
     ColaDoble *listaAviones = new ColaDoble();
+    DobleOrdenada *listaEscritorios = new DobleOrdenada();
+
+    char BuscarLetra();
+
 
 private slots:
     void on_btnIniciar_clicked();
