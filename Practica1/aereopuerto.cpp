@@ -91,5 +91,56 @@ char aereopuerto::BuscarLetra(){
 
 void aereopuerto::on_btnSiguiente_clicked()
 {
+    //>>>>>Aviones
+    //verificar que la lista de aviones no esté vacia
+    Avion *tmp_plane = listaAviones->primero;
+    if(tmp_plane == NULL){
+        //ya no quedan aviones para desabordar
+    }else{
+        //preguntar si el tiempo de sabordaje no ha terminado
+       if(tmp_plane->tiempo_desbordaje == 0){
+           //se debe eliminar el avion de la lista y enviarlo a mantenimiento
+       }else{
+            //preguntar si los pasajeros aún están arriba
+           int noPasajeros = tmp_plane->pasajeros;
+           if(noPasajeros > 0){
+                //sacar pasajeros de la lista y repartirnos en los escritorios
+                DesabordarPasajeros(noPasajeros);
+           }else{
+               //simplemente se le resta un turno al avión
+               tmp_plane->tiempo_desbordaje--;
+           }
+
+       }
+    }
+}
+
+void aereopuerto::DesabordarPasajeros(int numero){
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

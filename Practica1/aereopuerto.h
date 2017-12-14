@@ -20,7 +20,7 @@ public:
     Simple *listaEstaciones = new Simple();
 
     char BuscarLetra();
-
+    void DesabordarPasajeros(int numero);
 
 private slots:
     void on_btnIniciar_clicked();
