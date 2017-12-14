@@ -37,33 +37,31 @@ struct ColaDoble{
     char * getTipo(int numero);
 };
 
-
 //-------------------------------------------------  COLA SIMPLE
 struct Pasajero{
+    int id;
     int equipaje;
     int documentos;
     int tiempo_registro;
     Pasajero *siguiente;
-    Pasajero(int equipaje, int documentos, int tiempo_registro);
+    Pasajero(int id, int equipaje, int documentos, int tiempo_registro);
 };
 
 struct ColaPasajeros{
     Pasajero *primero;
     Pasajero *ultimo;
-    void Insertar(int equipaje, int documentos, int tiempo_registro);
+    void Insertar(int id, int equipaje, int documentos, int tiempo_registro);
     Pasajero *Eliminar();
 };
-
-
 
 //------------------------------------------------  DOBLEMENTE ORDENADA
 struct Escritorio{
     char id;
-    int estado; //ocupado o libre
-    int documentos; //cantidad de documentos a revisar
-    int faltante; //tiempo restante de pasajero atendido
-    //Cola simple de pasajeros
-    //Pila de documentos de pasajero atendido
+    int estado;                          //ocupado o libre
+    int documentos;                      //cantidad de documentos a revisar
+    int faltante;                        //tiempo restante de pasajero atendido
+    ColaPasajeros *cola_pasajeros;       //Cola simple de pasajeros
+    Pila *pila_documentos;               //Pila de documentos de pasajero atendido
     Escritorio *siguiente;
     Escritorio *anterior;
     Escritorio(char id, int estado, int documentos, int faltante);
@@ -73,10 +71,11 @@ struct DobleOrdenada{
     Escritorio *primero;
     Escritorio *ultimo;
     void Insertar(char id, int estado, int documentos, int faltante);
+    void Graficar();
 };
 
 
-//----------------------------------------------------- CIRCULAR
+//-------------------------------------------------   CIRCULAR
 struct Equipaje{
     int maletas;
     Equipaje *siguiente;
@@ -91,7 +90,7 @@ struct Circular{
     void Eliminar(int maletas);
 };
 
-//-----------------------------------------------------  PILA
+//--------------------------------------------------  PILA
 struct Documento{ //Pila
     int id;
     Documento *siguiente;

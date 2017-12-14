@@ -13,8 +13,12 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -24,6 +28,20 @@ class Ui_aereopuerto
 {
 public:
     QWidget *centralWidget;
+    QLabel *lblAviones;
+    QLabel *lblPasajeros;
+    QLabel *lblEscritorios;
+    QGroupBox *groupBox;
+    QPushButton *btnSiguiente;
+    QPushButton *btnIniciar;
+    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_2;
+    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_4;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *label_4;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *aereopuerto)
@@ -33,6 +51,60 @@ public:
         aereopuerto->resize(1729, 912);
         centralWidget = new QWidget(aereopuerto);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        lblAviones = new QLabel(centralWidget);
+        lblAviones->setObjectName(QStringLiteral("lblAviones"));
+        lblAviones->setGeometry(QRect(20, 20, 1211, 121));
+        lblPasajeros = new QLabel(centralWidget);
+        lblPasajeros->setObjectName(QStringLiteral("lblPasajeros"));
+        lblPasajeros->setGeometry(QRect(20, 160, 111, 731));
+        lblEscritorios = new QLabel(centralWidget);
+        lblEscritorios->setObjectName(QStringLiteral("lblEscritorios"));
+        lblEscritorios->setGeometry(QRect(154, 160, 721, 731));
+        groupBox = new QGroupBox(centralWidget);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(1250, 0, 451, 161));
+        QFont font;
+        font.setFamily(QStringLiteral("Yu Gothic UI Semibold"));
+        font.setBold(true);
+        font.setWeight(75);
+        groupBox->setFont(font);
+        btnSiguiente = new QPushButton(groupBox);
+        btnSiguiente->setObjectName(QStringLiteral("btnSiguiente"));
+        btnSiguiente->setGeometry(QRect(310, 100, 131, 51));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Yu Gothic UI Semibold"));
+        font1.setPointSize(9);
+        font1.setBold(true);
+        font1.setWeight(75);
+        btnSiguiente->setFont(font1);
+        btnIniciar = new QPushButton(groupBox);
+        btnIniciar->setObjectName(QStringLiteral("btnIniciar"));
+        btnIniciar->setGeometry(QRect(310, 30, 131, 51));
+        btnIniciar->setFont(font1);
+        lineEdit = new QLineEdit(groupBox);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(20, 50, 113, 31));
+        lineEdit_2 = new QLineEdit(groupBox);
+        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        lineEdit_2->setGeometry(QRect(170, 50, 111, 31));
+        lineEdit_3 = new QLineEdit(groupBox);
+        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEdit_3->setGeometry(QRect(20, 120, 111, 31));
+        lineEdit_4 = new QLineEdit(groupBox);
+        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+        lineEdit_4->setGeometry(QRect(170, 120, 113, 31));
+        label = new QLabel(groupBox);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(20, 30, 55, 16));
+        label_2 = new QLabel(groupBox);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(20, 100, 71, 16));
+        label_3 = new QLabel(groupBox);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(170, 30, 71, 16));
+        label_4 = new QLabel(groupBox);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(170, 100, 55, 16));
         aereopuerto->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(aereopuerto);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -46,6 +118,16 @@ public:
     void retranslateUi(QMainWindow *aereopuerto)
     {
         aereopuerto->setWindowTitle(QApplication::translate("aereopuerto", "aereopuerto", Q_NULLPTR));
+        lblAviones->setText(QString());
+        lblPasajeros->setText(QString());
+        lblEscritorios->setText(QString());
+        groupBox->setTitle(QApplication::translate("aereopuerto", "Datos Iniciales", Q_NULLPTR));
+        btnSiguiente->setText(QApplication::translate("aereopuerto", " Siguiente Turno", Q_NULLPTR));
+        btnIniciar->setText(QApplication::translate("aereopuerto", "Iniciar", Q_NULLPTR));
+        label->setText(QApplication::translate("aereopuerto", "Aviones:", Q_NULLPTR));
+        label_2->setText(QApplication::translate("aereopuerto", "Escritorios:", Q_NULLPTR));
+        label_3->setText(QApplication::translate("aereopuerto", "Estaciones:", Q_NULLPTR));
+        label_4->setText(QApplication::translate("aereopuerto", "Turnos:", Q_NULLPTR));
     } // retranslateUi
 
 };

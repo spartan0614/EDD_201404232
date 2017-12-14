@@ -1,0 +1,6 @@
+digraph Aviones{
+rankdir=LR;
+fontname = "Bitstream Vera Sans"
+node[shape=record,style=filled,fillcolor=seashell2,fontname = "Bitstream Vera Sans"];
+nodo0[label="Tipo:1 \l Pasajeros:14 \l Turnos \l desabordaje:3 \l"];
+nodo0}
