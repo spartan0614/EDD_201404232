@@ -17,6 +17,7 @@ public:
 
     ColaDoble *listaAviones = new ColaDoble();
     DobleOrdenada *listaEscritorios = new DobleOrdenada();
+    Simple *listaEstaciones = new Simple();
 
     char BuscarLetra();
 

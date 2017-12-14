@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 int identificadorAvion = 0;
+int identificadorEstacion = 0;
 
 aereopuerto::aereopuerto(QWidget *parent) :
     QMainWindow(parent),
@@ -27,7 +28,6 @@ void aereopuerto::on_btnIniciar_clicked()
         int pasajeros = 0;
         int t_desabordaje = 0;
         int t_mantenimiento = 0;
-
         tipo = rand()%3+1;
         if(tipo == 1){
             pasajeros = rand()%11+5;
@@ -42,7 +42,6 @@ void aereopuerto::on_btnIniciar_clicked()
             t_desabordaje = 3;
             t_mantenimiento = rand()%7+3;
         }
-
         listaAviones->Insertar(identificadorAvion,tipo,pasajeros,t_desabordaje,t_mantenimiento);
         identificadorAvion++;
     }
@@ -60,6 +59,17 @@ void aereopuerto::on_btnIniciar_clicked()
     listaEscritorios->Graficar();
     QPixmap b("Escritorios.png");
     ui->lblEscritorios->setPixmap(b);
+
+    //Inicio de la lista de estaciones
+    int noEstaciones = ui->lineEstaciones->text().toInt();
+    for(int k = 0; k < noEstaciones; k++){
+        listaEstaciones->Insertar(identificadorEstacion,0,0);
+        identificadorEstacion++;
+    }
+    listaEstaciones->Graficar();
+    QPixmap c("Estaciones.png");
+    ui->lblEstaciones->setPixmap(c);
+
 }
 
 char aereopuerto::BuscarLetra(){
@@ -77,7 +87,6 @@ char aereopuerto::BuscarLetra(){
          //Si llego hasta aquí es porque la letra no se encuentra en la lista
          return letra;
      }
-
 }
 
 void aereopuerto::on_btnSiguiente_clicked()

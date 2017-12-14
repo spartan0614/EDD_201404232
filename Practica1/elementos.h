@@ -110,7 +110,7 @@ struct Estacion{
     int estado; //ocupado o libre
     int faltante; //tiempo restante del avion actual atendido
     Estacion *siguiente;
-    Estacion(int estado, int faltante);
+    Estacion(int id, int estado, int faltante);
 };
 
 struct Simple{

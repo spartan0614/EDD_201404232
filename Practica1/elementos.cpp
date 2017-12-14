@@ -279,8 +279,8 @@ void DobleOrdenada::Graficar(){
 }
 
 //***************************************************   E S T A C I O N E S   ****************************************************
-void Simple::Insertar(int estado, int faltante){
-    Estacion *nuevo = new Estacion(estado,faltante);
+void Simple::Insertar(int id, int estado, int faltante){
+    Estacion *nuevo = new Estacion(id,estado,faltante);
     if(primero == NULL){
         primero = nuevo;
     }else{
@@ -307,39 +307,30 @@ void Simple::Graficar(){
         fprintf(archivo,"rankdir=LR;\n");
         fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
         fprintf(archivo,"node[shape=record,style=filled,fillcolor=seashell2,fontname = \"Bitstream Vera Sans\"];\n");
-        //datos de la lista doble
-        fprintf(archivo,"nodo%d[label=\"Tipo:%s \\l Pasajeros:%d \\l Turnos \\l desabordaje:%d \\l\"];\n",aux->id,getTipo(aux->tipo),aux->pasajeros,aux->tiempo_desbordaje);
+        //datos de la lista simple
+        fprintf(archivo,"nodo%d[label=\"Estado:%d \\l Turnos \\l faltantes:%d \\l\"];\n",aux->id,aux->estado,aux->faltante);
         if(aux->siguiente == NULL){
 
         }else{
             aux = aux->siguiente;
             while(aux != NULL){
-                fprintf(archivo,"nodo%d[label=\"Tipo:%s \\l Pasajeros:%d \\l Turnos \\l desabordaje:%d \\l\"];\n",aux->id,getTipo(aux->tipo),aux->pasajeros,aux->tiempo_desbordaje);
+                fprintf(archivo,"nodo%d[label=\"Estado:%d \\l Turnos \\l faltantes:%d \\l\"];\n",aux->id,aux->estado,aux->faltante);
                 aux = aux->siguiente;
             }
         }
         //conexiones con punteros de los nodos
-        fprintf(archivo,"nodo%d",aux2->id);
-        if(aux2->siguiente == NULL){
+        aux = primero;
+        fprintf(archivo,"nodo%d",aux->id);
+        if(aux->siguiente == NULL){
             //Si solo hay un nodo en la lista
         }else{
-            aux2 = aux2->siguiente;
-            while (aux2 != NULL) {
-                 fprintf(archivo,"->nodo%d",aux2->id);
-                 aux2 = aux2->siguiente;
+            aux = aux->siguiente;
+            while (aux != NULL) {
+                 fprintf(archivo,"->nodo%d",aux->id);
+                 aux = aux->siguiente;
             }
-
-            fprintf(archivo,";\n");
-
-            while (temporal != primero){
-               fprintf(archivo,"nodo%d->",temporal->id);
-               temporal = temporal->anterior;
-            }
-            fprintf(archivo,"nodo%d",primero->id);
-
             fprintf(archivo,";\n");
         }
-
         fprintf(archivo,"}\n");
         fclose(archivo);
 

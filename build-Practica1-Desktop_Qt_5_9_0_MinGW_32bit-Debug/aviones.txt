@@ -2,16 +2,18 @@ digraph Aviones{
 rankdir=LR;
 fontname = "Bitstream Vera Sans"
 node[shape=record,style=filled,fillcolor=seashell2,fontname = "Bitstream Vera Sans"];
-nodo0[label="Tipo:grande \l Pasajeros:51 \l Turnos \l desabordaje:3 \l"];
-nodo1[label="Tipo:mediano \l Pasajeros:21 \l Turnos \l desabordaje:2 \l"];
-nodo2[label="Tipo:mediano \l Pasajeros:33 \l Turnos \l desabordaje:2 \l"];
-nodo3[label="Tipo:pequeño \l Pasajeros:11 \l Turnos \l desabordaje:1 \l"];
-nodo4[label="Tipo:mediano \l Pasajeros:15 \l Turnos \l desabordaje:2 \l"];
-nodo5[label="Tipo:grande \l Pasajeros:32 \l Turnos \l desabordaje:3 \l"];
-nodo6[label="Tipo:grande \l Pasajeros:52 \l Turnos \l desabordaje:3 \l"];
-nodo7[label="Tipo:pequeño \l Pasajeros:13 \l Turnos \l desabordaje:1 \l"];
-nodo8[label="Tipo:grande \l Pasajeros:38 \l Turnos \l desabordaje:3 \l"];
-nodo9[label="Tipo:grande \l Pasajeros:36 \l Turnos \l desabordaje:3 \l"];
-nodo0->nodo1->nodo2->nodo3->nodo4->nodo5->nodo6->nodo7->nodo8->nodo9;
-nodo9->nodo8->nodo7->nodo6->nodo5->nodo4->nodo3->nodo2->nodo1->nodo0;
+nodo0[label="Tipo:grande \l Pasajeros:35 \l Turnos \l desabordaje:3 \l"];
+nodo1[label="Tipo:mediano \l Pasajeros:15 \l Turnos \l desabordaje:2 \l"];
+nodo2[label="Tipo:pequeño \l Pasajeros:13 \l Turnos \l desabordaje:1 \l"];
+nodo3[label="Tipo:mediano \l Pasajeros:23 \l Turnos \l desabordaje:2 \l"];
+nodo4[label="Tipo:grande \l Pasajeros:48 \l Turnos \l desabordaje:3 \l"];
+nodo5[label="Tipo:pequeño \l Pasajeros:6 \l Turnos \l desabordaje:1 \l"];
+nodo6[label="Tipo:grande \l Pasajeros:58 \l Turnos \l desabordaje:3 \l"];
+nodo7[label="Tipo:mediano \l Pasajeros:17 \l Turnos \l desabordaje:2 \l"];
+nodo8[label="Tipo:grande \l Pasajeros:68 \l Turnos \l desabordaje:3 \l"];
+nodo9[label="Tipo:pequeño \l Pasajeros:10 \l Turnos \l desabordaje:1 \l"];
+nodo10[label="Tipo:mediano \l Pasajeros:31 \l Turnos \l desabordaje:2 \l"];
+nodo11[label="Tipo:grande \l Pasajeros:69 \l Turnos \l desabordaje:3 \l"];
+nodo0->nodo1->nodo2->nodo3->nodo4->nodo5->nodo6->nodo7->nodo8->nodo9->nodo10->nodo11;
+nodo11->nodo10->nodo9->nodo8->nodo7->nodo6->nodo5->nodo4->nodo3->nodo2->nodo1->nodo0;
 }

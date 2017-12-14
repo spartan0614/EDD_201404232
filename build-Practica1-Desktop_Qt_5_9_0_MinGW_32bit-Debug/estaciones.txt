@@ -1,0 +1,18 @@
+digraph Estaciones{
+rankdir=LR;
+fontname = "Bitstream Vera Sans"
+node[shape=record,style=filled,fillcolor=seashell2,fontname = "Bitstream Vera Sans"];
+nodo0[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo1[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo2[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo3[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo4[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo5[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo6[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo7[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo8[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo9[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo10[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo11[label="Estado:(null) \l Turnos \l faltantes:0 \l"];
+nodo0->nodo1->nodo2->nodo3->nodo4->nodo5->nodo6->nodo7->nodo8->nodo9->nodo10->nodo11;
+}
