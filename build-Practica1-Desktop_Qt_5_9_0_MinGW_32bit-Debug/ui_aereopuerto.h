@@ -59,6 +59,7 @@ public:
         lblPasajeros = new QLabel(centralWidget);
         lblPasajeros->setObjectName(QStringLiteral("lblPasajeros"));
         lblPasajeros->setGeometry(QRect(20, 160, 111, 731));
+        lblPasajeros->setScaledContents(true);
         lblEscritorios = new QLabel(centralWidget);
         lblEscritorios->setObjectName(QStringLiteral("lblEscritorios"));
         lblEscritorios->setGeometry(QRect(154, 160, 721, 731));

@@ -31,17 +31,17 @@ void aereopuerto::on_btnIniciar_clicked()
         int t_mantenimiento = 0;
         tipo = rand()%3+1;
         if(tipo == 1){
-            pasajeros = rand()%11+5;
+            pasajeros = rand()%6+5;
             t_desabordaje = 1;
             t_mantenimiento = rand()%3+1;
         }else if(tipo == 2){
-            pasajeros = rand()%26+15;
+            pasajeros = rand()%11+15;
             t_desabordaje = 2;
-            t_mantenimiento = rand()%5+2;
+            t_mantenimiento = rand()%3+2;
         }else if(tipo == 3){
-            pasajeros = rand()%41+30;
+            pasajeros = rand()%11+30;
             t_desabordaje = 3;
-            t_mantenimiento = rand()%7+3;
+            t_mantenimiento = rand()%4+3;
         }
         listaAviones->Insertar(identificadorAvion,tipo,pasajeros,t_desabordaje,t_mantenimiento);
         identificadorAvion++;
@@ -101,18 +101,38 @@ void aereopuerto::on_btnSiguiente_clicked()
         //preguntar si el tiempo de sabordaje no ha terminado
        if(tmp_plane->tiempo_desbordaje == 0){
            //se debe eliminar el avion de la lista y enviarlo a mantenimiento
+           listaAviones->Eliminar();
        }else{
             //preguntar si los pasajeros aún están arriba
            int noPasajeros = tmp_plane->pasajeros;
            if(noPasajeros > 0){
                 //sacar pasajeros de la lista y repartirnos en los escritorios
                 DesabordarPasajeros(noPasajeros);
+                tmp_plane->pasajeros = 0;
+                tmp_plane->tiempo_desbordaje--;
            }else{
                //simplemente se le resta un turno al avión
                tmp_plane->tiempo_desbordaje--;
            }
        }
     }
+
+    listaAviones->Graficar();
+    QPixmap a("Aviones.png");
+    ui->lblAviones->setPixmap(a);
+
+    listaEscritorios->Graficar();
+    QPixmap b("Escritorios.png");
+    ui->lblEscritorios->setPixmap(b);
+
+    //Si se llenó la cola de pasajeros debe mostrarse
+    if(listaPasajeros->primero != NULL){
+        listaPasajeros->Graficar();
+        QPixmap e("Pasajeros.png");
+        ui->lblPasajeros->setPixmap(e);
+    }
+
+
 }
 
 void aereopuerto::DesabordarPasajeros(int numero){
@@ -133,10 +153,11 @@ void aereopuerto::DesabordarPasajeros(int numero){
                     int turnos_registro = 0;
 
                     maletas = rand()%4+1;
-                    documentos = rand()%11+1;
+                    documentos = rand()%10+1;
                     turnos_registro = rand()%3+1;
 
-                    tmp->cola_pasajeros->Insertar(identificadorEstacion,maletas,documentos,turnos_registro);
+                    tmp->cola_pasajeros->Insertar(identificacionPasajero,maletas,documentos,turnos_registro);
+                    identificacionPasajero++;
                     numero--;
                     if(numero == 0){
                         break;
@@ -145,6 +166,22 @@ void aereopuerto::DesabordarPasajeros(int numero){
             }
             tmp = tmp->siguiente;
         }
+
+        if(numero > 0){  //Si ya no caben las personas en los escritorios entonces se debe llenar la cola de espera.
+            for(int i = 0; i < numero; i++){
+                int maletas = 0;
+                int documentos = 0;
+                int turnos_registro = 0;
+
+                maletas = rand()%4+1;
+                documentos = rand()%10+1;
+                turnos_registro = rand()%3+1;
+
+                listaPasajeros->Insertar(identificacionPasajero,maletas,documentos,turnos_registro);
+                identificacionPasajero++;
+            }
+        }
+        numero = 0;
     }
 }
 

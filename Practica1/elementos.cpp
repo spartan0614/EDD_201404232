@@ -156,6 +156,52 @@ void ColaPasajeros::Insertar(int id, int equipaje, int documentos, int tiempo_re
 
  }
 
+ void ColaPasajeros::Graficar(){
+     FILE *archivo;
+     archivo = fopen("pasajeros.txt", "w");
+     if(archivo == NULL){
+         exit(-1);
+     }
+     Pasajero *aux = primero;
+
+     if(primero == NULL){
+         fprintf(archivo,"No existen nodos en la lsita de personas");
+     }else{
+         fprintf(archivo,"digraph Pasajeros{\n");
+         fprintf(archivo,"rankdir=TB;\n");
+         fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
+         fprintf(archivo,"node[shape=record,style=filled,fillcolor=seashell2,fontname = \"Bitstream Vera Sans\"];\n");
+         //datos de la lista simple
+         fprintf(archivo,"nodo%d[label=\"Pasajero:%d \\l Maletas:%d \\l Documentos:%d\"];\n",aux->id,aux->id,aux->equipaje,aux->documentos);
+         if(aux->siguiente == NULL){
+
+         }else{
+             aux = aux->siguiente;
+             while(aux != NULL){
+                fprintf(archivo,"nodo%d[label=\"Pasajero:%d \\l Maletas:%d \\l Documentos:%d\"];\n",aux->id,aux->id,aux->equipaje,aux->documentos);
+                aux = aux->siguiente;
+             }
+         }
+         //conexiones con punteros de los nodos
+         aux = primero;
+         fprintf(archivo,"nodo%d",aux->id);
+         if(aux->siguiente == NULL){
+             //Si solo hay un nodo en la lista
+         }else{
+             aux = aux->siguiente;
+             while (aux != NULL) {
+                  fprintf(archivo,"->nodo%d",aux->id);
+                  aux = aux->siguiente;
+             }
+             fprintf(archivo,";\n");
+         }
+         fprintf(archivo,"}\n");
+         fclose(archivo);
+         system("dot -Tpng pasajeros.txt -o Pasajeros.png");
+     }
+ }
+
+
  //***************************************************  E S C R I T O R I O S  ****************************************************
  void DobleOrdenada::Insertar(char id, int estado, int documentos, int faltante){
     Escritorio *nuevo = new Escritorio(id, estado, documentos, faltante);
@@ -217,10 +263,11 @@ void DobleOrdenada::Graficar(){
         fprintf(archivo,"};\n");
         //conexiones con punteros de los nodos escritorio
         aux = primero;
-        fprintf(archivo,"nodo%c", aux->id);
+
         if(aux->siguiente == NULL){
 
         }else{
+            fprintf(archivo,"nodo%c", aux->id);
             aux = aux->siguiente;
             while(aux != NULL) {
                 fprintf(archivo,"->nodo%c",aux->id);

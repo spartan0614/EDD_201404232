@@ -52,6 +52,7 @@ struct ColaPasajeros{
     Pasajero *primero;
     Pasajero *ultimo;
     void Insertar(int id, int equipaje, int documentos, int tiempo_registro);
+    void Graficar();
     Pasajero *Eliminar();
 };
 

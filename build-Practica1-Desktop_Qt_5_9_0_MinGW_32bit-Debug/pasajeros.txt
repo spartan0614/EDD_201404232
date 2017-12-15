@@ -1,0 +1,22 @@
+digraph Pasajeros{
+rankdir=TB;
+fontname = "Bitstream Vera Sans"
+node[shape=record,style=filled,fillcolor=seashell2,fontname = "Bitstream Vera Sans"];
+nodo80[label="Pasajero:80 \l Maletas:4 \l Documentos:3"];
+nodo81[label="Pasajero:81 \l Maletas:2 \l Documentos:4"];
+nodo82[label="Pasajero:82 \l Maletas:3 \l Documentos:6"];
+nodo83[label="Pasajero:83 \l Maletas:2 \l Documentos:7"];
+nodo84[label="Pasajero:84 \l Maletas:4 \l Documentos:2"];
+nodo85[label="Pasajero:85 \l Maletas:3 \l Documentos:1"];
+nodo86[label="Pasajero:86 \l Maletas:4 \l Documentos:5"];
+nodo87[label="Pasajero:87 \l Maletas:2 \l Documentos:2"];
+nodo88[label="Pasajero:88 \l Maletas:2 \l Documentos:9"];
+nodo89[label="Pasajero:89 \l Maletas:1 \l Documentos:4"];
+nodo90[label="Pasajero:90 \l Maletas:2 \l Documentos:9"];
+nodo91[label="Pasajero:91 \l Maletas:1 \l Documentos:8"];
+nodo92[label="Pasajero:92 \l Maletas:3 \l Documentos:10"];
+nodo93[label="Pasajero:93 \l Maletas:1 \l Documentos:3"];
+nodo94[label="Pasajero:94 \l Maletas:2 \l Documentos:6"];
+nodo95[label="Pasajero:95 \l Maletas:4 \l Documentos:3"];
+nodo80->nodo81->nodo82->nodo83->nodo84->nodo85->nodo86->nodo87->nodo88->nodo89->nodo90->nodo91->nodo92->nodo93->nodo94->nodo95;
+}
