@@ -5,30 +5,16 @@ node[shape = record, style = filled, fillcolor = seashell2, fontname = "Bitstrea
 {
 rank=min;
 nodoA[label="A \n Estado:0 \l"];
-nodoC[label="C \n Estado:0 \l"];
 nodoD[label="D \n Estado:0 \l"];
 nodoF[label="F \n Estado:0 \l"];
 nodoH[label="H \n Estado:0 \l"];
-nodoJ[label="J \n Estado:0 \l"];
-nodoL[label="L \n Estado:0 \l"];
-nodoN[label="N \n Estado:0 \l"];
-nodoO[label="O \n Estado:0 \l"];
-nodoV[label="V \n Estado:0 \l"];
-nodoW[label="W \n Estado:0 \l"];
-nodoY[label="Y \n Estado:0 \l"];
+nodoK[label="K \n Estado:0 \l"];
 };
-nodoA->nodoC->nodoD->nodoF->nodoH->nodoJ->nodoL->nodoN->nodoO->nodoV->nodoW->nodoY;
-nodoY->nodoW->nodoV->nodoO->nodoN->nodoL->nodoJ->nodoH->nodoF->nodoD->nodoC->nodoA;
+nodoA->nodoD->nodoF->nodoH->nodoK;
+nodoK->nodoH->nodoF->nodoD->nodoA;
 nodoA;
-nodoC;
 nodoD;
 nodoF;
 nodoH;
-nodoJ;
-nodoL;
-nodoN;
-nodoO;
-nodoV;
-nodoW;
-nodoY;
+nodoK;
 }

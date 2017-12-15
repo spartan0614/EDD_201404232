@@ -5,6 +5,7 @@
 
 int identificadorAvion = 0;
 int identificadorEstacion = 0;
+int identificacionPasajero = 0;
 
 aereopuerto::aereopuerto(QWidget *parent) :
     QMainWindow(parent),
@@ -110,13 +111,41 @@ void aereopuerto::on_btnSiguiente_clicked()
                //simplemente se le resta un turno al avión
                tmp_plane->tiempo_desbordaje--;
            }
-
        }
     }
 }
 
 void aereopuerto::DesabordarPasajeros(int numero){
+    Escritorio *tmp = listaEscritorios->primero;
+    //preguntar si la lista de escritorios no esta vacía.
+    if(tmp == NULL){
+        //No pasa nada porque no puede hacer nada
+    }else{
+        srand(time(NULL));
+        while(tmp != NULL) {
+            if(numero == 0){
+                break;
+            }
+            if(tmp->cola_pasajeros->size < 10){
+                for(int i = tmp->cola_pasajeros->size; i < 10; i++){
+                    int maletas = 0;
+                    int documentos = 0;
+                    int turnos_registro = 0;
 
+                    maletas = rand()%4+1;
+                    documentos = rand()%11+1;
+                    turnos_registro = rand()%3+1;
+
+                    tmp->cola_pasajeros->Insertar(identificadorEstacion,maletas,documentos,turnos_registro);
+                    numero--;
+                    if(numero == 0){
+                        break;
+                    }
+                }
+            }
+            tmp = tmp->siguiente;
+        }
+    }
 }
 
 

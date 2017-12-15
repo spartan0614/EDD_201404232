@@ -111,6 +111,7 @@ public:
         lblEstaciones = new QLabel(centralWidget);
         lblEstaciones->setObjectName(QStringLiteral("lblEstaciones"));
         lblEstaciones->setGeometry(QRect(900, 170, 791, 171));
+        lblEstaciones->setScaledContents(true);
         aereopuerto->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(aereopuerto);
         statusBar->setObjectName(QStringLiteral("statusBar"));
