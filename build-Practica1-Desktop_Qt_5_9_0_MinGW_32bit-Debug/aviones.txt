@@ -2,16 +2,14 @@ digraph Aviones{
 rankdir=LR;
 fontname = "Bitstream Vera Sans"
 node[shape=record,style=filled,fillcolor=seashell2,fontname = "Bitstream Vera Sans"];
-nodo2[label="Tipo:mediano \l Pasajeros:25 \l Turnos \l desabordaje:2 \l"];
-nodo3[label="Tipo:pequeño \l Pasajeros:9 \l Turnos \l desabordaje:1 \l"];
-nodo4[label="Tipo:mediano \l Pasajeros:19 \l Turnos \l desabordaje:2 \l"];
-nodo5[label="Tipo:mediano \l Pasajeros:15 \l Turnos \l desabordaje:2 \l"];
-nodo6[label="Tipo:pequeño \l Pasajeros:6 \l Turnos \l desabordaje:1 \l"];
-nodo7[label="Tipo:pequeño \l Pasajeros:8 \l Turnos \l desabordaje:1 \l"];
-nodo8[label="Tipo:mediano \l Pasajeros:21 \l Turnos \l desabordaje:2 \l"];
-nodo9[label="Tipo:pequeño \l Pasajeros:8 \l Turnos \l desabordaje:1 \l"];
-nodo10[label="Tipo:pequeño \l Pasajeros:7 \l Turnos \l desabordaje:1 \l"];
-nodo11[label="Tipo:pequeño \l Pasajeros:8 \l Turnos \l desabordaje:1 \l"];
-nodo2->nodo3->nodo4->nodo5->nodo6->nodo7->nodo8->nodo9->nodo10->nodo11;
-nodo11->nodo10->nodo9->nodo8->nodo7->nodo6->nodo5->nodo4->nodo3->nodo2;
+nodo0[label="Tipo:mediano \l Pasajeros:0 \l Turnos \l desabordaje:1 \l"];
+nodo1[label="Tipo:pequeño \l Pasajeros:5 \l Turnos \l desabordaje:1 \l"];
+nodo2[label="Tipo:pequeño \l Pasajeros:6 \l Turnos \l desabordaje:1 \l"];
+nodo3[label="Tipo:mediano \l Pasajeros:22 \l Turnos \l desabordaje:2 \l"];
+nodo4[label="Tipo:mediano \l Pasajeros:20 \l Turnos \l desabordaje:2 \l"];
+nodo5[label="Tipo:grande \l Pasajeros:38 \l Turnos \l desabordaje:3 \l"];
+nodo6[label="Tipo:pequeño \l Pasajeros:10 \l Turnos \l desabordaje:1 \l"];
+nodo7[label="Tipo:pequeño \l Pasajeros:7 \l Turnos \l desabordaje:1 \l"];
+nodo0->nodo1->nodo2->nodo3->nodo4->nodo5->nodo6->nodo7;
+nodo7->nodo6->nodo5->nodo4->nodo3->nodo2->nodo1->nodo0;
 }
