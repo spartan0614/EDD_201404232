@@ -34,6 +34,7 @@ struct ColaDoble{
     void Insertar(int id, int tipo, int pasajeros, int tiempo_desbordaje, int tiempo_mantnimento);
     Avion *Eliminar();
     void Graficar();
+    void GraficarEspera();
     char * getTipo(int numero);
 };
 
@@ -53,7 +54,8 @@ struct ColaPasajeros{
     Pasajero *ultimo;
     void Insertar(int id, int equipaje, int documentos, int tiempo_registro);
     void Graficar();
-    Pasajero *Eliminar();
+    void Eliminar();
+    Pasajero *getPasajero();
 };
 
 //------------------------------------------------  DOBLEMENTE ORDENADA
@@ -108,8 +110,9 @@ struct Pila{
 //----------------------------------------------------- SIMPLE
 struct Estacion{
     int id;
-    int estado; //ocupado o libre
-    int faltante; //tiempo restante del avion actual atendido
+    int estado;             //ocupado o libre
+    int faltante;           //tiempo restante del avion actual atendido
+    Avion *acceso;          //apuntador al avión que actualmente está atendiendo
     Estacion *siguiente;
     Estacion(int id, int estado, int faltante);
 };

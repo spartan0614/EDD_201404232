@@ -92,6 +92,13 @@ char aereopuerto::BuscarLetra(){
 
 void aereopuerto::on_btnSiguiente_clicked()
 {
+
+    //>>>>>>>Pasajeros en cola de Escritorios
+    AtenderPasajeros();
+
+    //>>>>>>Pasajeros en cola de espera
+    EncolarEnEspera();
+
     //>>>>>Aviones
     //verificar que la lista de aviones no esté vacia
     Avion *tmp_plane = listaAviones->primero;
@@ -101,7 +108,9 @@ void aereopuerto::on_btnSiguiente_clicked()
         //preguntar si el tiempo de sabordaje no ha terminado
        if(tmp_plane->tiempo_desbordaje == 0){
            //se debe eliminar el avion de la lista y enviarlo a mantenimiento
-           listaAviones->Eliminar();
+           Avion *listo = listaAviones->Eliminar();
+           LlevarMantenimiento(listo);
+
        }else{
             //preguntar si los pasajeros aún están arriba
            int noPasajeros = tmp_plane->pasajeros;
@@ -117,6 +126,8 @@ void aereopuerto::on_btnSiguiente_clicked()
        }
     }
 
+
+
     listaAviones->Graficar();
     QPixmap a("Aviones.png");
     ui->lblAviones->setPixmap(a);
@@ -131,6 +142,7 @@ void aereopuerto::on_btnSiguiente_clicked()
         QPixmap e("Pasajeros.png");
         ui->lblPasajeros->setPixmap(e);
     }
+
 
 
 }
@@ -185,11 +197,69 @@ void aereopuerto::DesabordarPasajeros(int numero){
     }
 }
 
+void aereopuerto::AtenderPasajeros(){
+    Escritorio *tmp = listaEscritorios->primero;
+    if(tmp == NULL){
+        //No hay escritorios en la lista
+    }else{
+        while(tmp != NULL){
+            Pasajero *actual = tmp->cola_pasajeros->primero;
+            if(actual != NULL){
+                int time_actual = actual->tiempo_registro;
+                if(time_actual == 0){
+                    //Si el turno del pasajero llega a cero entonces debe eliminarse
+                    tmp->cola_pasajeros->Eliminar();
+                }else{
+                    //restar el tiempo para registro en la cola
+                    actual->tiempo_registro--;
+                }
+            }
+            tmp = tmp->siguiente;
+        }
+    }
+}
 
+void aereopuerto::EncolarEnEspera(){
+    Escritorio *tmp = listaEscritorios->primero;
+    if(tmp == NULL){
+            //No hay escritorios en la lista entonce no se puede hacer nada
+    }else{
+         while(tmp != NULL) {
+            if(listaPasajeros->primero == NULL){
+                break;
+            }
+            if(tmp->cola_pasajeros->size < 10){
+                for(int i = tmp->cola_pasajeros->size;i<10;i++){
+                    Pasajero *nuevo = listaPasajeros->getPasajero();
+                    tmp->cola_pasajeros->Insertar(nuevo->id,nuevo->equipaje,nuevo->documentos,nuevo->tiempo_registro);
+                    if(listaPasajeros->primero == NULL){
+                        break;
+                    }
+                }
+            }
+            tmp = tmp->siguiente;
+        }
+    }
+}
 
+void aereopuerto::LlevarMantenimiento(Avion *plane){
+    if(listaEstaciones->primero == NULL){
+        //No pasa nada porque no hay estaciones de mantenimietno
+    }else{
+        Estacion *tmp = listaEstaciones->primero;
+        while(tmp != NULL) {
+            if(tmp->acceso == NULL){
+                tmp->acceso = plane;
+                break;
+            }
+            tmp = tmp->siguiente;
+        }
 
-
-
+        //Si llego hasta acá es porque todas las estaciones están ocupadas
+        //Entonces se debe empezar a llenar otra lista de espera
+        listaEsperaMantenimiento->Insertar(plane->id,plane->tipo,plane->pasajeros,plane->tiempo_desbordaje,plane->tiempo_mantnimento);
+    }
+}
 
 
 

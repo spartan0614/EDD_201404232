@@ -41,9 +41,10 @@ Estacion::Estacion(int id, int estado, int faltante){
     this->estado = estado;
     this->faltante = faltante;
     this->siguiente = NULL;
+    this->acceso == NULL;
 }
 
-//*****************************************     A V I O N E S     **********************************************
+//******************************************************     A V I O N E S    ************ **********************************************
 void ColaDoble::Insertar(int id,int tipo, int pasajeros, int tiempo_desbordaje, int tiempo_mantnimento){
     Avion *nuevo = new Avion(id,tipo, pasajeros, tiempo_desbordaje,tiempo_mantnimento);
     if(primero == NULL){
@@ -55,20 +56,22 @@ void ColaDoble::Insertar(int id,int tipo, int pasajeros, int tiempo_desbordaje, 
     }
 }
 
- Avion *ColaDoble::Eliminar(){
+Avion *ColaDoble::Eliminar(){
     if(primero == NULL){
         //No hay nada que eliminar
     }else if(primero == ultimo){
         Avion *tmp = primero;
+        Avion *otro = new Avion(tmp->id,tmp->tipo,tmp->pasajeros,tmp->tiempo_desbordaje,tmp->tiempo_mantnimento);
         primero = ultimo = NULL;
-        return tmp;
+        return otro;
     }else{
         Avion *tmp = primero;
+        Avion *otro = new Avion(tmp->id,tmp->tipo,tmp->pasajeros,tmp->tiempo_desbordaje,tmp->tiempo_mantnimento);
         primero = primero->siguiente;
         primero->anterior = NULL;
-        return tmp;
+        return otro;
     }
- }
+}
 
 void ColaDoble::Graficar(){
     FILE *archivo;
@@ -136,6 +139,52 @@ char *ColaDoble::getTipo(int numero){
     }
 }
 
+void ColaDoble::GraficarEspera(){
+    FILE *archivo;
+    archivo = fopen("mantenimiento.txt", "w");
+    if(archivo == NULL){
+        exit(-1);
+    }
+    Avion *aux = primero;
+    Avion *aux2 = primero;
+    if(primero == NULL){
+        fprintf(archivo,"No existen nodos en la lsita de personas");
+    }else{
+        fprintf(archivo,"digraph Aviones{\n");
+        fprintf(archivo,"rankdir=TB;\n");
+        fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
+        fprintf(archivo,"node[shape=record,style=filled,fillcolor=seashell2,fontname = \"Bitstream Vera Sans\"];\n");
+        //datos de la lista doble
+        fprintf(archivo,"nodo%d[label=\"Tipo:%s \\l Turnos \\l desabordaje:%d \\l\"];\n",aux->id,getTipo(aux->tipo),aux->tiempo_mantnimento);
+        if(aux->siguiente == NULL){
+
+        }else{
+            aux = aux->siguiente;
+            while(aux != NULL){
+                fprintf(archivo,"nodo%d[label=\"Tipo:%s \\l Turnos \\l mantenimiento:%d \\l\"];\n",aux->id,getTipo(aux->tipo),aux->tiempo_mantnimento);
+                aux = aux->siguiente;
+            }
+        }
+        //conexiones con punteros de los nodos
+        fprintf(archivo,"nodo%d",aux2->id);
+        if(aux2->siguiente == NULL){
+            //Si solo hay un nodo en la lista
+        }else{
+            aux2 = aux2->siguiente;
+            while (aux2 != NULL) {
+                 fprintf(archivo,"->nodo%d",aux2->id);
+                 aux2 = aux2->siguiente;
+            }
+
+            fprintf(archivo,";\n");
+        }
+
+        fprintf(archivo,"}\n");
+        fclose(archivo);
+
+        system("dot -Tpng mantenimiento.txt -o Mantenimiento.png");
+    }
+}
 
 //****************************************************   P A S A J E R O S   *****************************************************
 void ColaPasajeros::Insertar(int id, int equipaje, int documentos, int tiempo_registro){
@@ -152,11 +201,45 @@ void ColaPasajeros::Insertar(int id, int equipaje, int documentos, int tiempo_re
     size++;
  }
 
- Pasajero *ColaPasajeros::Eliminar(){
+void ColaPasajeros::Eliminar(){
+    if(primero == NULL){
+        //No hay nodo que eliminar
+    }else if(primero->siguiente == NULL){ //Solo hay un nodo en la lista
+        Pasajero *j = primero;
+        primero = NULL;
+        size--;
+        free(j);
+    }else{
+        Pasajero *j = primero;
+        primero = primero->siguiente;
+        size--;
+        free(j);
+    }
+}
 
- }
+Pasajero *ColaPasajeros::getPasajero(){
+    if(primero == NULL){
+        //No hay ningun pasajero por retornar
+        return NULL;
+    }else if(primero->siguiente == NULL){ //Solo hay un nodo en la lista
+        Pasajero *actual = primero;
+        Pasajero *otro = new Pasajero(actual->id,actual->equipaje,actual->documentos,actual->tiempo_registro);
+        primero = NULL;
+        size--;
+        free(actual);
+        return otro;
+    }else{
+        Pasajero *actual = primero;
+        Pasajero *otro = new Pasajero(actual->id,actual->equipaje,actual->documentos,actual->tiempo_registro);
+        primero = primero->siguiente;
+        actual->siguiente = NULL;
+        size--;
+        free(actual);
+        return otro;
+    }
+}
 
- void ColaPasajeros::Graficar(){
+void ColaPasajeros::Graficar(){
      FILE *archivo;
      archivo = fopen("pasajeros.txt", "w");
      if(archivo == NULL){
@@ -199,11 +282,11 @@ void ColaPasajeros::Insertar(int id, int equipaje, int documentos, int tiempo_re
          fclose(archivo);
          system("dot -Tpng pasajeros.txt -o Pasajeros.png");
      }
- }
+}
 
 
  //***************************************************  E S C R I T O R I O S  ****************************************************
- void DobleOrdenada::Insertar(char id, int estado, int documentos, int faltante){
+void DobleOrdenada::Insertar(char id, int estado, int documentos, int faltante){
     Escritorio *nuevo = new Escritorio(id, estado, documentos, faltante);
     if(primero == NULL){
         primero = ultimo = nuevo;
@@ -225,12 +308,12 @@ void ColaPasajeros::Insertar(int id, int equipaje, int documentos, int tiempo_re
                     nuevo->anterior = aux;
                     aux->siguiente = nuevo;
                     break;
-                }
-                aux = aux->siguiente;
-            }
-        }
-    }
- }
+               }
+               aux = aux->siguiente;
+           }
+       }
+   }
+}
 
 void DobleOrdenada::Graficar(){
     FILE *archivo;
@@ -292,7 +375,7 @@ void DobleOrdenada::Graficar(){
 
             }else{
                 while(tmp != NULL) {
-                    fprintf(archivo,"nodo%d[label=\"Pasajero:%d \\l Maletas:%d \\l Documentos:%d\"];\n", tmp->id,tmp->id,tmp->equipaje,tmp->documentos);
+                    fprintf(archivo,"nodo%d[label=\"Pasajero:%d \\l Maletas:%d \\l Documentos:%d \\l Tiempo:%d \\l\"];\n", tmp->id,tmp->id,tmp->equipaje,tmp->documentos,tmp->tiempo_registro);
                     tmp = tmp->siguiente;
                 }
             }
@@ -378,6 +461,10 @@ void Simple::Graficar(){
             }
             fprintf(archivo,";\n");
         }
+
+        //Aviones que estan en mantenimiento
+
+
         fprintf(archivo,"}\n");
         fclose(archivo);
 

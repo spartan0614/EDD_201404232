@@ -7,5 +7,6 @@ nodo1[label="Estado:0 \l Turnos \l faltantes:0 \l"];
 nodo2[label="Estado:0 \l Turnos \l faltantes:0 \l"];
 nodo3[label="Estado:0 \l Turnos \l faltantes:0 \l"];
 nodo4[label="Estado:0 \l Turnos \l faltantes:0 \l"];
-nodo0->nodo1->nodo2->nodo3->nodo4;
+nodo5[label="Estado:0 \l Turnos \l faltantes:0 \l"];
+nodo0->nodo1->nodo2->nodo3->nodo4->nodo5;
 }

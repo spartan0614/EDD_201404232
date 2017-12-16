@@ -16,12 +16,16 @@ public:
     ~aereopuerto();
 
     ColaDoble *listaAviones = new ColaDoble();
+    ColaDoble *listaEsperaMantenimiento = new ColaDoble();
     DobleOrdenada *listaEscritorios = new DobleOrdenada();
     Simple *listaEstaciones = new Simple();
     ColaPasajeros *listaPasajeros = new ColaPasajeros();
 
     char BuscarLetra();
     void DesabordarPasajeros(int numero);
+    void AtenderPasajeros();
+    void EncolarEnEspera();
+    void LlevarMantenimiento(Avion *plane);
 
 private slots:
     void on_btnIniciar_clicked();

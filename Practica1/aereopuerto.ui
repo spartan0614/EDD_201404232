@@ -17,9 +17,9 @@
    <widget class="QLabel" name="lblAviones">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>1211</width>
+      <x>150</x>
+      <y>10</y>
+      <width>1261</width>
       <height>121</height>
      </rect>
     </property>
@@ -34,9 +34,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>160</y>
+      <y>10</y>
       <width>111</width>
-      <height>731</height>
+      <height>881</height>
      </rect>
     </property>
     <property name="text">
@@ -65,10 +65,10 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>1250</x>
+      <x>1430</x>
       <y>0</y>
-      <width>451</width>
-      <height>161</height>
+      <width>291</width>
+      <height>151</height>
      </rect>
     </property>
     <property name="font">
@@ -84,9 +84,9 @@
     <widget class="QPushButton" name="btnSiguiente">
      <property name="geometry">
       <rect>
-       <x>310</x>
-       <y>100</y>
-       <width>131</width>
+       <x>190</x>
+       <y>90</y>
+       <width>81</width>
        <height>51</height>
       </rect>
      </property>
@@ -99,15 +99,15 @@
       </font>
      </property>
      <property name="text">
-      <string> Siguiente Turno</string>
+      <string> Turno &gt;&gt;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btnIniciar">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>190</x>
        <y>30</y>
-       <width>131</width>
+       <width>81</width>
        <height>51</height>
       </rect>
      </property>
@@ -126,9 +126,9 @@
     <widget class="QLineEdit" name="lineAviones">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>50</y>
-       <width>113</width>
+       <width>71</width>
        <height>31</height>
       </rect>
      </property>
@@ -136,9 +136,9 @@
     <widget class="QLineEdit" name="lineEstaciones">
      <property name="geometry">
       <rect>
-       <x>170</x>
+       <x>100</x>
        <y>50</y>
-       <width>111</width>
+       <width>71</width>
        <height>31</height>
       </rect>
      </property>
@@ -146,9 +146,9 @@
     <widget class="QLineEdit" name="lineEscritorios">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>120</y>
-       <width>111</width>
+       <x>10</x>
+       <y>110</y>
+       <width>71</width>
        <height>31</height>
       </rect>
      </property>
@@ -156,9 +156,9 @@
     <widget class="QLineEdit" name="lineTurnos">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>120</y>
-       <width>113</width>
+       <x>100</x>
+       <y>110</y>
+       <width>71</width>
        <height>31</height>
       </rect>
      </property>
@@ -166,7 +166,7 @@
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>30</y>
        <width>55</width>
        <height>16</height>
@@ -179,8 +179,8 @@
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>100</y>
+       <x>10</x>
+       <y>90</y>
        <width>71</width>
        <height>16</height>
       </rect>
@@ -192,7 +192,7 @@
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>170</x>
+       <x>100</x>
        <y>30</y>
        <width>71</width>
        <height>16</height>
@@ -205,8 +205,8 @@
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>100</y>
+       <x>100</x>
+       <y>90</y>
        <width>55</width>
        <height>16</height>
       </rect>
@@ -221,8 +221,24 @@
      <rect>
       <x>900</x>
       <y>170</y>
-      <width>791</width>
-      <height>171</height>
+      <width>811</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblMantenimiento">
+    <property name="geometry">
+     <rect>
+      <x>1560</x>
+      <y>350</y>
+      <width>131</width>
+      <height>551</height>
      </rect>
     </property>
     <property name="text">
