@@ -193,6 +193,7 @@ void aereopuerto::DesabordarPasajeros(int numero){
                         break;
                     }
                 }
+                tmp->estado = 1;
             }
             tmp = tmp->siguiente;
         }
@@ -231,6 +232,9 @@ void aereopuerto::AtenderPasajeros(){
                     }
                     //Si el turno del pasajero llega a cero entonces debe eliminarse
                     tmp->cola_pasajeros->Eliminar();
+                    if(tmp->cola_pasajeros->primero == NULL){
+                        tmp->estado = 0;
+                    }
 
                 }else{
                     //restar el tiempo para registro en la cola
@@ -245,7 +249,7 @@ void aereopuerto::AtenderPasajeros(){
 void aereopuerto::EncolarEnEspera(){
     Escritorio *tmp = listaEscritorios->primero;
     if(tmp == NULL){
-            //No hay escritorios en la lista entonce no se puede hacer nada
+            //No hay escritorios en la lista entonces no se puede hacer nada
     }else{
          while(tmp != NULL) {
             if(listaPasajeros->primero == NULL){
@@ -274,6 +278,7 @@ void aereopuerto::LlevarMantenimiento(Avion *plane){
         while(tmp != NULL) {
             if(tmp->acceso == NULL){
                 tmp->acceso = plane;
+                tmp->estado = 1;
                 hayEspacio = true;
                 break;
             }
@@ -299,6 +304,7 @@ void aereopuerto::AtenderAviones(){
                 int time_actual = actual->tiempo_mantnimento;
                 if(time_actual == 0){
                     //Si el turno del avión llega a cero entonces debe eliminarse
+                    tmp->estado = 0;
                     tmp->acceso = NULL;
                 }else{
                     //restar el tiempo de mantenimiento de avión en la estación

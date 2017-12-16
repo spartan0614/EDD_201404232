@@ -2,15 +2,25 @@ digraph Pasajeros{
 rankdir=TB;
 fontname = "Bitstream Vera Sans"
 node[shape=record,style=filled,fillcolor=seashell2,fontname = "Bitstream Vera Sans"];
-nodo30[label="Pasajero:30 \l Maletas:2 \l Documentos:9"];
-nodo31[label="Pasajero:31 \l Maletas:2 \l Documentos:2"];
-nodo32[label="Pasajero:32 \l Maletas:1 \l Documentos:6"];
-nodo33[label="Pasajero:33 \l Maletas:4 \l Documentos:4"];
-nodo34[label="Pasajero:34 \l Maletas:4 \l Documentos:3"];
-nodo35[label="Pasajero:35 \l Maletas:1 \l Documentos:5"];
-nodo36[label="Pasajero:36 \l Maletas:4 \l Documentos:10"];
-nodo37[label="Pasajero:37 \l Maletas:4 \l Documentos:1"];
-nodo38[label="Pasajero:38 \l Maletas:3 \l Documentos:2"];
-nodo39[label="Pasajero:39 \l Maletas:2 \l Documentos:8"];
-nodo30->nodo31->nodo32->nodo33->nodo34->nodo35->nodo36->nodo37->nodo38->nodo39;
+nodo64[label="Pasajero:64 \l Maletas:3 \l Documentos:6"];
+nodo65[label="Pasajero:65 \l Maletas:1 \l Documentos:10"];
+nodo66[label="Pasajero:66 \l Maletas:3 \l Documentos:7"];
+nodo67[label="Pasajero:67 \l Maletas:2 \l Documentos:10"];
+nodo68[label="Pasajero:68 \l Maletas:1 \l Documentos:5"];
+nodo69[label="Pasajero:69 \l Maletas:3 \l Documentos:9"];
+nodo70[label="Pasajero:70 \l Maletas:2 \l Documentos:1"];
+nodo71[label="Pasajero:71 \l Maletas:2 \l Documentos:9"];
+nodo72[label="Pasajero:72 \l Maletas:1 \l Documentos:3"];
+nodo73[label="Pasajero:73 \l Maletas:1 \l Documentos:1"];
+nodo74[label="Pasajero:74 \l Maletas:1 \l Documentos:10"];
+nodo75[label="Pasajero:75 \l Maletas:1 \l Documentos:3"];
+nodo76[label="Pasajero:76 \l Maletas:1 \l Documentos:2"];
+nodo77[label="Pasajero:77 \l Maletas:4 \l Documentos:6"];
+nodo78[label="Pasajero:78 \l Maletas:1 \l Documentos:1"];
+nodo79[label="Pasajero:79 \l Maletas:1 \l Documentos:5"];
+nodo80[label="Pasajero:80 \l Maletas:2 \l Documentos:3"];
+nodo81[label="Pasajero:81 \l Maletas:2 \l Documentos:10"];
+nodo82[label="Pasajero:82 \l Maletas:3 \l Documentos:4"];
+nodo83[label="Pasajero:83 \l Maletas:2 \l Documentos:9"];
+nodo64->nodo65->nodo66->nodo67->nodo68->nodo69->nodo70->nodo71->nodo72->nodo73->nodo74->nodo75->nodo76->nodo77->nodo78->nodo79->nodo80->nodo81->nodo82->nodo83;
 }

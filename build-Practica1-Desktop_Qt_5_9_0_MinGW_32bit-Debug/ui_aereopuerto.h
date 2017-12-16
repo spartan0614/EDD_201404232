@@ -117,11 +117,11 @@ public:
         lblEstaciones->setScaledContents(true);
         lblMantenimiento = new QLabel(centralWidget);
         lblMantenimiento->setObjectName(QStringLiteral("lblMantenimiento"));
-        lblMantenimiento->setGeometry(QRect(1560, 340, 131, 561));
+        lblMantenimiento->setGeometry(QRect(1560, 340, 131, 541));
         lblMantenimiento->setScaledContents(true);
         lblMaletas = new QLabel(centralWidget);
         lblMaletas->setObjectName(QStringLiteral("lblMaletas"));
-        lblMaletas->setGeometry(QRect(890, 340, 641, 361));
+        lblMaletas->setGeometry(QRect(1290, 340, 261, 541));
         lblMaletas->setScaledContents(true);
         aereopuerto->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(aereopuerto);

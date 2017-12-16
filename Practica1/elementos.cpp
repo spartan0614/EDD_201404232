@@ -89,7 +89,14 @@ void ColaDoble::Graficar(){
     Avion *temporal = ultimo;
     Avion *aux2 = primero;
     if(primero == NULL){
-        fprintf(archivo,"No existen nodos en la lsita de personas");
+        fprintf(archivo,"digraph Aviones{\n");
+        fprintf(archivo,"rankdir=LR;\n");
+        fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
+        fprintf(archivo,"node[shape=record,style=filled,fillcolor=limegreen,fontname = \"Bitstream Vera Sans\"];\n");
+        fprintf(archivo,"nodoA[label=\"Ya no hay nodos en la lista\"];\n");
+        fprintf(archivo,"}\n");
+        fclose(archivo);
+        system("dot -Tpng aviones.txt -o Aviones.png");
     }else{
         fprintf(archivo,"digraph Aviones{\n");
         fprintf(archivo,"rankdir=LR;\n");
@@ -154,9 +161,16 @@ void ColaDoble::GraficarEspera(){
     Avion *aux = primero;
     Avion *aux2 = primero;
     if(primero == NULL){
-        fprintf(archivo,"No existen nodos en la lsita de personas");
+        fprintf(archivo,"digraph Matenimiento{\n");
+        fprintf(archivo,"rankdir=LR;\n");
+        fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
+        fprintf(archivo,"node[shape=record,style=filled,fillcolor=limegreen,fontname = \"Bitstream Vera Sans\"];\n");
+        fprintf(archivo,"nodoA[label=\"Ya no hay nodos en la lista\"];\n");
+        fprintf(archivo,"}\n");
+        fclose(archivo);
+        system("dot -Tpng mantenimiento.txt -o Mantenimiento.png");
     }else{
-        fprintf(archivo,"digraph Aviones{\n");
+        fprintf(archivo,"digraph Mantenimiento{\n");
         fprintf(archivo,"rankdir=TB;\n");
         fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
         fprintf(archivo,"node[shape=record,style=filled,fillcolor=seashell2,fontname = \"Bitstream Vera Sans\"];\n");
@@ -254,7 +268,14 @@ void ColaPasajeros::Graficar(){
      Pasajero *aux = primero;
 
      if(primero == NULL){
-         fprintf(archivo,"No existen nodos en la lsita de personas");
+         fprintf(archivo,"digraph Pasajeros{\n");
+         fprintf(archivo,"rankdir=LR;\n");
+         fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
+         fprintf(archivo,"node[shape=record,style=filled,fillcolor=limegreen,fontname = \"Bitstream Vera Sans\"];\n");
+         fprintf(archivo,"nodoA[label=\"Ya no hay nodos en la lista\"];\n");
+         fprintf(archivo,"}\n");
+         fclose(archivo);
+         system("dot -Tpng pasajeros.txt -o Pasajeros.png");
      }else{
          fprintf(archivo,"digraph Pasajeros{\n");
          fprintf(archivo,"rankdir=TB;\n");
@@ -321,6 +342,22 @@ void DobleOrdenada::Insertar(char id, int estado, int documentos, int faltante){
    }
 }
 
+char *DobleOrdenada::getEstado(int numero){
+    if(numero == 0){
+        return "libre";
+    }else if(numero == 1){
+        return "ocupado";
+    }
+}
+
+int DobleOrdenada::getDocumentos(Escritorio *aux){
+    if(aux->cola_pasajeros->primero == NULL){
+        return 0;
+    }else{
+        return  aux->cola_pasajeros->primero->documentos;
+    }
+}
+
 void DobleOrdenada::Graficar(){
     FILE *archivo;
     archivo = fopen("escritorios.txt", "w");
@@ -339,13 +376,13 @@ void DobleOrdenada::Graficar(){
         fprintf(archivo,"{\n");
         fprintf(archivo,"rank=min;\n");
         //datos de la lista doble
-        fprintf(archivo,"nodo%c[label=\"%c \\n Estado:%d \\l\"];\n",aux->id,aux->id,aux->estado);
+        fprintf(archivo,"nodo%c[label=\"%c \\n Estado:%s \\l Documentos:%d \\l\"];\n",aux->id,aux->id,getEstado(aux->estado),getDocumentos(aux));
         if(aux->siguiente == NULL){
 
         }else{
             aux = aux->siguiente;
             while(aux != NULL) {
-                 fprintf(archivo,"nodo%c[label=\"%c \\n Estado:%d \\l\"];\n",aux->id,aux->id,aux->estado);
+                 fprintf(archivo,"nodo%c[label=\"%c \\n Estado:%s \\l Documentos:%d \\l\"];\n",aux->id,aux->id,getEstado(aux->estado),getDocumentos(aux));
                  aux =  aux->siguiente;
             }
         }
@@ -380,7 +417,7 @@ void DobleOrdenada::Graficar(){
 
             }else{
                 while(tmp != NULL) {
-                    fprintf(archivo,"nodo%d[label=\"Pasajero:%d \\l Maletas:%d \\l Documentos:%d \\l Tiempo:%d \\l\"];\n", tmp->id,tmp->id,tmp->equipaje,tmp->documentos,tmp->tiempo_registro);
+                    fprintf(archivo,"nodo%d[label=\"Pasajero:%d \\l Maletas:%d \\l Tiempo:%d \\l\"];\n", tmp->id,tmp->id,tmp->equipaje,tmp->tiempo_registro);
                     tmp = tmp->siguiente;
                 }
             }
@@ -427,6 +464,14 @@ void Simple::Insertar(int id, int estado, int faltante){
     }
 }
 
+char *Simple::getEstado(int numero){
+    if(numero == 0){
+        return "libre";
+    }else if(numero == 1){
+        return "ocupado";
+    }
+}
+
 void Simple::Graficar(){
     FILE *archivo;
     archivo = fopen("estaciones.txt", "w");
@@ -445,13 +490,13 @@ void Simple::Graficar(){
         fprintf(archivo,"{\n");
         fprintf(archivo,"rank=min;\n");
         //datos de la lista simple
-        fprintf(archivo,"nodo%d[label=\"Estado:%d \\l Turnos \\l faltantes:%d \\l\"];\n",aux->id,aux->estado,aux->faltante);
+        fprintf(archivo,"nodo%d[label=\"Estado:%s \\l\"];\n",aux->id,getEstado(aux->estado));
         if(aux->siguiente == NULL){
 
         }else{
             aux = aux->siguiente;
             while(aux != NULL){
-                fprintf(archivo,"nodo%d[label=\"Estado:%d \\l Turnos \\l faltantes:%d \\l\"];\n",aux->id,aux->estado,aux->faltante);
+                fprintf(archivo,"nodo%d[label=\"Estado:%s\\l\"];\n",aux->id,getEstado(aux->estado));
                 aux = aux->siguiente;
             }
         }
@@ -478,7 +523,7 @@ void Simple::Graficar(){
             if(tmp == NULL){
                 //No imprime nada;
             }else{
-                 fprintf(archivo,"nodoA%d[label=\"Avión:%d Turnos \\l mantenimiento:%d \\l\"];\n",tmp->id,tmp->id,tmp->tiempo_mantnimento);
+                 fprintf(archivo,"nodoA%d[label=\"Avión:%d \\l Turnos \\l mantenimiento:%d \\l\"];\n",tmp->id,tmp->id,tmp->tiempo_mantnimento);
             }
             aux = aux->siguiente;
         }
@@ -544,7 +589,14 @@ void Circular::Graficar(){
     Equipaje *aux = primero;
     Equipaje *temp = ultimo;
     if(primero == NULL){
-         fprintf(archivo, "No existen nodos en la lista de artistas");
+        fprintf(archivo,"digraph Equipaje{\n");
+        fprintf(archivo,"rankdir=LR;\n");
+        fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
+        fprintf(archivo,"node[shape=record,style=filled,fillcolor=limegreen,fontname = \"Bitstream Vera Sans\"];\n");
+        fprintf(archivo,"nodoA[label=\"Ya no hay nodos en la lista\"];\n");
+        fprintf(archivo,"}\n");
+        fclose(archivo);
+        system("dot -Tpng equipaje.txt -o Equipaje.png");
     }else{
         fprintf(archivo, "digraph Equipaje{\n");
         do{

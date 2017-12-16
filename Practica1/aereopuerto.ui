@@ -238,7 +238,7 @@
       <x>1560</x>
       <y>340</y>
       <width>131</width>
-      <height>561</height>
+      <height>541</height>
      </rect>
     </property>
     <property name="text">
@@ -251,10 +251,10 @@
    <widget class="QLabel" name="lblMaletas">
     <property name="geometry">
      <rect>
-      <x>890</x>
+      <x>1290</x>
       <y>340</y>
-      <width>641</width>
-      <height>361</height>
+      <width>261</width>
+      <height>541</height>
      </rect>
     </property>
     <property name="text">
