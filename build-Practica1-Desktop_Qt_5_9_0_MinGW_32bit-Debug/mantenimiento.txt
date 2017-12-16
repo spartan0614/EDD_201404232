@@ -1,9 +1,6 @@
-digraph Estaciones{
+digraph Aviones{
 rankdir=TB;
 fontname = "Bitstream Vera Sans"
 node[shape=record,style=filled,fillcolor=seashell2,fontname = "Bitstream Vera Sans"];
-{
-rank=min;
-nodo0[label="Estado:0 \l Turnos \l faltantes:0 \l"];
-};
-}
+nodo8[label="Tipo:mediano \l Turnos \l desabordaje:3 \l"];
+nodo8}

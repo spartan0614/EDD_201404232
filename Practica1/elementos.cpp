@@ -41,7 +41,13 @@ Estacion::Estacion(int id, int estado, int faltante){
     this->estado = estado;
     this->faltante = faltante;
     this->siguiente = NULL;
-    this->acceso == NULL;
+    this->acceso = NULL;
+}
+
+Equipaje::Equipaje(int maletas){
+    this->maletas = maletas;
+    this->siguiente = NULL;
+    this->anterior = NULL;
 }
 
 //******************************************************     A V I O N E S    ************ **********************************************
@@ -346,7 +352,6 @@ void DobleOrdenada::Graficar(){
         fprintf(archivo,"};\n");
         //conexiones con punteros de los nodos escritorio
         aux = primero;
-
         if(aux->siguiente == NULL){
 
         }else{
@@ -434,9 +439,11 @@ void Simple::Graficar(){
         fprintf(archivo,"No existen nodos en la lsita de personas");
     }else{
         fprintf(archivo,"digraph Estaciones{\n");
-        fprintf(archivo,"rankdir=LR;\n");
+        fprintf(archivo,"rankdir=TB;\n");
         fprintf(archivo,"fontname = \"Bitstream Vera Sans\"\n");
         fprintf(archivo,"node[shape=record,style=filled,fillcolor=seashell2,fontname = \"Bitstream Vera Sans\"];\n");
+        fprintf(archivo,"{\n");
+        fprintf(archivo,"rank=min;\n");
         //datos de la lista simple
         fprintf(archivo,"nodo%d[label=\"Estado:%d \\l Turnos \\l faltantes:%d \\l\"];\n",aux->id,aux->estado,aux->faltante);
         if(aux->siguiente == NULL){
@@ -448,12 +455,14 @@ void Simple::Graficar(){
                 aux = aux->siguiente;
             }
         }
+        fprintf(archivo,"};\n");
+
         //conexiones con punteros de los nodos
         aux = primero;
-        fprintf(archivo,"nodo%d",aux->id);
         if(aux->siguiente == NULL){
             //Si solo hay un nodo en la lista
         }else{
+            fprintf(archivo,"nodo%d",aux->id);
             aux = aux->siguiente;
             while (aux != NULL) {
                  fprintf(archivo,"->nodo%d",aux->id);
@@ -463,7 +472,29 @@ void Simple::Graficar(){
         }
 
         //Aviones que estan en mantenimiento
+        aux = primero;
+        while(aux != NULL){
+            Avion *tmp = aux->acceso;
+            if(tmp == NULL){
+                //No imprime nada;
+            }else{
+                 fprintf(archivo,"nodoA%d[label=\"Avión:%d Turnos \\l mantenimiento:%d \\l\"];\n",tmp->id,tmp->id,tmp->tiempo_mantnimento);
+            }
+            aux = aux->siguiente;
+        }
 
+        //Enlaces de estacion con avión que esta en mantenimiento
+        aux = primero;
+        while(aux != NULL) {
+            Avion *tmp = aux->acceso;
+            //fprintf(archivo,"nodo%d",aux->id);
+            if(tmp == NULL){
+
+            }else{
+                fprintf(archivo,"nodo%d->nodoA%d;\n",aux->id,tmp->id);
+            }
+            aux = aux->siguiente;
+        }
 
         fprintf(archivo,"}\n");
         fclose(archivo);
@@ -472,26 +503,66 @@ void Simple::Graficar(){
     }
 }
 
+//************************************************************   M A L E T A S   ************************************************************
+void Circular::Insertar(int maletas){
+    Equipaje *nuevo = new Equipaje(maletas);
+    nuevo->siguiente = NULL;
+    nuevo->anterior = NULL;
 
+    if(primero == NULL){
+        primero = ultimo = nuevo;
+        nuevo->siguiente = primero;
+        nuevo->anterior = ultimo;
+    }else{
+        ultimo->siguiente = nuevo;
+        nuevo->anterior = ultimo;
+        nuevo->siguiente = primero;
+        primero->anterior = nuevo;
+        ultimo = nuevo;
+    }
+}
 
+void Circular::Eliminar()
+{
+    Equipaje *aux = primero;  //Nodo a eliminar
+    if(primero == primero->siguiente){ //Lista con un solo nodo
+        primero = ultimo = NULL;
+    }else{
+       primero = primero->siguiente;
+       ultimo->siguiente = aux->siguiente;
+       aux->siguiente->anterior = ultimo;
+     }
+     free(aux);
+}
 
+void Circular::Graficar(){
+    FILE * archivo;
+    archivo = fopen("equipaje.txt", "w");
+    if(archivo == NULL){
+        exit(-1);
+    }
+    Equipaje *aux = primero;
+    Equipaje *temp = ultimo;
+    if(primero == NULL){
+         fprintf(archivo, "No existen nodos en la lista de artistas");
+    }else{
+        fprintf(archivo, "digraph Equipaje{\n");
+        do{
+            fprintf(archivo,"%d->",aux->maletas);
+            aux = aux->siguiente;
+        }while (aux != primero);
+        fprintf(archivo,"%d;\n",primero->maletas);
 
+        do{
+            fprintf(archivo,"%d->", temp->maletas);
+            temp = temp->anterior;
+        }while(temp != ultimo);
+         fprintf(archivo,"%d",ultimo->maletas);
 
+        fprintf(archivo,";\n");
+        fprintf(archivo,"}\n");
+        fclose(archivo);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        system("dot -Tpng equipaje.txt -o Equipaje.png");
+    }
+}

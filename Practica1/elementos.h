@@ -1,6 +1,7 @@
 #ifndef ELEMENTOS_H
 #define ELEMENTOS_H
 
+
 //Nodos
 typedef struct Avion Avion;
 typedef struct Pasajero Pasajero;
@@ -35,6 +36,7 @@ struct ColaDoble{
     Avion *Eliminar();
     void Graficar();
     void GraficarEspera();
+    std::string archivoNulo();
     char * getTipo(int numero);
 };
 
@@ -91,7 +93,8 @@ struct Circular{
     Equipaje *primero;
     Equipaje *ultimo;
     void Insertar(int maletas);
-    void Eliminar(int maletas);
+    void Eliminar();
+    void Graficar();
 };
 
 //--------------------------------------------------  PILA

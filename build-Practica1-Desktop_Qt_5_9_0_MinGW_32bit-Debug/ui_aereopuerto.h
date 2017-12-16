@@ -43,6 +43,8 @@ public:
     QLabel *label_3;
     QLabel *label_4;
     QLabel *lblEstaciones;
+    QLabel *lblMantenimiento;
+    QLabel *lblMaletas;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *aereopuerto)
@@ -111,8 +113,16 @@ public:
         label_4->setGeometry(QRect(100, 90, 55, 16));
         lblEstaciones = new QLabel(centralWidget);
         lblEstaciones->setObjectName(QStringLiteral("lblEstaciones"));
-        lblEstaciones->setGeometry(QRect(900, 170, 791, 171));
+        lblEstaciones->setGeometry(QRect(890, 170, 821, 161));
         lblEstaciones->setScaledContents(true);
+        lblMantenimiento = new QLabel(centralWidget);
+        lblMantenimiento->setObjectName(QStringLiteral("lblMantenimiento"));
+        lblMantenimiento->setGeometry(QRect(1560, 340, 131, 561));
+        lblMantenimiento->setScaledContents(true);
+        lblMaletas = new QLabel(centralWidget);
+        lblMaletas->setObjectName(QStringLiteral("lblMaletas"));
+        lblMaletas->setGeometry(QRect(890, 340, 641, 361));
+        lblMaletas->setScaledContents(true);
         aereopuerto->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(aereopuerto);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -137,6 +147,8 @@ public:
         label_3->setText(QApplication::translate("aereopuerto", "Estaciones:", Q_NULLPTR));
         label_4->setText(QApplication::translate("aereopuerto", "Turnos:", Q_NULLPTR));
         lblEstaciones->setText(QString());
+        lblMantenimiento->setText(QString());
+        lblMaletas->setText(QString());
     } // retranslateUi
 
 };
