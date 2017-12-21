@@ -4,11 +4,15 @@ fontname = "Bitstream Vera Sans"
 node[shape=record,style=filled,fillcolor=seashell2,fontname = "Bitstream Vera Sans"];
 {
 rank=min;
-nodo0[label="Estado:libre \l"];
+nodo0[label="Estado:ocupado \l"];
 nodo1[label="Estado:libre\l"];
-nodo2[label="Estado:libre\l"];
+nodo2[label="Estado:ocupado\l"];
 nodo3[label="Estado:libre\l"];
 nodo4[label="Estado:libre\l"];
 };
 nodo0->nodo1->nodo2->nodo3->nodo4;
+nodoA0[label="Avión:0 \l Turnos \l mantenimiento:1 \l"];
+nodoA2[label="Avión:2 \l Turnos \l mantenimiento:2 \l"];
+nodo0->nodoA0;
+nodo2->nodoA2;
 }
