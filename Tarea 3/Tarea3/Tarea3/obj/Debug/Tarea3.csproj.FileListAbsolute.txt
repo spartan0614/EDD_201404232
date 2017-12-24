@@ -1,0 +1,6 @@
+C:\Users\Dinora\Documents\Dinora\EDD\Tarea3\Tarea3\bin\Debug\Tarea3.exe.config
+C:\Users\Dinora\Documents\Dinora\EDD\Tarea3\Tarea3\bin\Debug\Tarea3.exe
+C:\Users\Dinora\Documents\Dinora\EDD\Tarea3\Tarea3\bin\Debug\Tarea3.pdb
+C:\Users\Dinora\Documents\Dinora\EDD\Tarea3\Tarea3\obj\Debug\Tarea3.csprojResolveAssemblyReference.cache
+C:\Users\Dinora\Documents\Dinora\EDD\Tarea3\Tarea3\obj\Debug\Tarea3.exe
+C:\Users\Dinora\Documents\Dinora\EDD\Tarea3\Tarea3\obj\Debug\Tarea3.pdb
