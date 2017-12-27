@@ -78,11 +78,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArbolBinario.cs" />
+    <Compile Include="Encabezado.cs" />
+    <Compile Include="Juego.cs" />
+    <Compile Include="ListaEncabezados.cs" />
+    <Compile Include="ListaJuegos.cs" />
+    <Compile Include="Matriz.cs" />
     <Compile Include="NavalwarService.asmx.cs">
       <DependentUpon>NavalwarService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Nodo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -16,7 +16,6 @@ namespace GameService
     // [System.Web.Script.Services.ScriptService]
     public class NavalwarService : System.Web.Services.WebService
     {
-
         [WebMethod]
         public string HelloWorld()
         {
