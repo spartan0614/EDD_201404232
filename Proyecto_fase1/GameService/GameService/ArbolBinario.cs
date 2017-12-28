@@ -316,10 +316,15 @@ namespace GameService
 
         public void ProcessGraphic()
         {
-            var fileName = "Usuarios.txt";
-            SaveToFile(fileName);
-            string path = Directory.GetCurrentDirectory();
-            GenerarGrafo(fileName, path);
+            if (this.raiz != null) {
+                var fileName = "Usuarios.txt";
+                SaveToFile(fileName);
+                string path = Directory.GetCurrentDirectory();
+                GenerarGrafo(fileName, path);
+
+                //return "Usuarios.png";
+            }
+            //return ""; 
         }
 
         void GenerarGrafo(string filename, string path)

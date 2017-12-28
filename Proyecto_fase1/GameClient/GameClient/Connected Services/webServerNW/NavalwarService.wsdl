@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/NavalWar" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://localhost/NavalWar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/NavalWar">
+      <s:element name="Administrador">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdministradorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdministradorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpFileUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="path" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpFileUsersResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpFileGames">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="path" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpFileGamesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddNewUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="conectado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getHeigth">
+        <s:complexType />
+      </s:element>
+      <s:element name="getHeigthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getHeigthResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLevels">
+        <s:complexType />
+      </s:element>
+      <s:element name="getLevelsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getLevelsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLeaves">
+        <s:complexType />
+      </s:element>
+      <s:element name="getLeavesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getLeavesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBranches">
+        <s:complexType />
+      </s:element>
+      <s:element name="getBranchesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getBranchesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="graphTree">
+        <s:complexType />
+      </s:element>
+      <s:element name="graphTreeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IngresoUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IngresoUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IngresoUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AdministradorSoapIn">
+    <wsdl:part name="parameters" element="tns:Administrador" />
+  </wsdl:message>
+  <wsdl:message name="AdministradorSoapOut">
+    <wsdl:part name="parameters" element="tns:AdministradorResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpFileUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:UpFileUsers" />
+  </wsdl:message>
+  <wsdl:message name="UpFileUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:UpFileUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpFileGamesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpFileGames" />
+  </wsdl:message>
+  <wsdl:message name="UpFileGamesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpFileGamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNewUser" />
+  </wsdl:message>
+  <wsdl:message name="AddNewUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNewUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHeigthSoapIn">
+    <wsdl:part name="parameters" element="tns:getHeigth" />
+  </wsdl:message>
+  <wsdl:message name="getHeigthSoapOut">
+    <wsdl:part name="parameters" element="tns:getHeigthResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLevelsSoapIn">
+    <wsdl:part name="parameters" element="tns:getLevels" />
+  </wsdl:message>
+  <wsdl:message name="getLevelsSoapOut">
+    <wsdl:part name="parameters" element="tns:getLevelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLeavesSoapIn">
+    <wsdl:part name="parameters" element="tns:getLeaves" />
+  </wsdl:message>
+  <wsdl:message name="getLeavesSoapOut">
+    <wsdl:part name="parameters" element="tns:getLeavesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBranchesSoapIn">
+    <wsdl:part name="parameters" element="tns:getBranches" />
+  </wsdl:message>
+  <wsdl:message name="getBranchesSoapOut">
+    <wsdl:part name="parameters" element="tns:getBranchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="graphTreeSoapIn">
+    <wsdl:part name="parameters" element="tns:graphTree" />
+  </wsdl:message>
+  <wsdl:message name="graphTreeSoapOut">
+    <wsdl:part name="parameters" element="tns:graphTreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IngresoUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:IngresoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IngresoUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:IngresoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Proyecto_x0020_EDDSoap">
+    <wsdl:operation name="Administrador">
+      <wsdl:input message="tns:AdministradorSoapIn" />
+      <wsdl:output message="tns:AdministradorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpFileUsers">
+      <wsdl:input message="tns:UpFileUsersSoapIn" />
+      <wsdl:output message="tns:UpFileUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpFileGames">
+      <wsdl:input message="tns:UpFileGamesSoapIn" />
+      <wsdl:output message="tns:UpFileGamesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewUser">
+      <wsdl:input message="tns:AddNewUserSoapIn" />
+      <wsdl:output message="tns:AddNewUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input message="tns:DeleteUserSoapIn" />
+      <wsdl:output message="tns:DeleteUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getHeigth">
+      <wsdl:input message="tns:getHeigthSoapIn" />
+      <wsdl:output message="tns:getHeigthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLevels">
+      <wsdl:input message="tns:getLevelsSoapIn" />
+      <wsdl:output message="tns:getLevelsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLeaves">
+      <wsdl:input message="tns:getLeavesSoapIn" />
+      <wsdl:output message="tns:getLeavesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBranches">
+      <wsdl:input message="tns:getBranchesSoapIn" />
+      <wsdl:output message="tns:getBranchesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="graphTree">
+      <wsdl:input message="tns:graphTreeSoapIn" />
+      <wsdl:output message="tns:graphTreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IngresoUsuario">
+      <wsdl:input message="tns:IngresoUsuarioSoapIn" />
+      <wsdl:output message="tns:IngresoUsuarioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Proyecto_x0020_EDDSoap" type="tns:Proyecto_x0020_EDDSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Administrador">
+      <soap:operation soapAction="http://localhost/NavalWar/Administrador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpFileUsers">
+      <soap:operation soapAction="http://localhost/NavalWar/UpFileUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpFileGames">
+      <soap:operation soapAction="http://localhost/NavalWar/UpFileGames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewUser">
+      <soap:operation soapAction="http://localhost/NavalWar/AddNewUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://localhost/NavalWar/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHeigth">
+      <soap:operation soapAction="http://localhost/NavalWar/getHeigth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLevels">
+      <soap:operation soapAction="http://localhost/NavalWar/getLevels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLeaves">
+      <soap:operation soapAction="http://localhost/NavalWar/getLeaves" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBranches">
+      <soap:operation soapAction="http://localhost/NavalWar/getBranches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graphTree">
+      <soap:operation soapAction="http://localhost/NavalWar/graphTree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngresoUsuario">
+      <soap:operation soapAction="http://localhost/NavalWar/IngresoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Proyecto_x0020_EDDSoap12" type="tns:Proyecto_x0020_EDDSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Administrador">
+      <soap12:operation soapAction="http://localhost/NavalWar/Administrador" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpFileUsers">
+      <soap12:operation soapAction="http://localhost/NavalWar/UpFileUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpFileGames">
+      <soap12:operation soapAction="http://localhost/NavalWar/UpFileGames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewUser">
+      <soap12:operation soapAction="http://localhost/NavalWar/AddNewUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap12:operation soapAction="http://localhost/NavalWar/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHeigth">
+      <soap12:operation soapAction="http://localhost/NavalWar/getHeigth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLevels">
+      <soap12:operation soapAction="http://localhost/NavalWar/getLevels" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLeaves">
+      <soap12:operation soapAction="http://localhost/NavalWar/getLeaves" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBranches">
+      <soap12:operation soapAction="http://localhost/NavalWar/getBranches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graphTree">
+      <soap12:operation soapAction="http://localhost/NavalWar/graphTree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngresoUsuario">
+      <soap12:operation soapAction="http://localhost/NavalWar/IngresoUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Proyecto_x0020_EDD">
+    <wsdl:port name="Proyecto_x0020_EDDSoap" binding="tns:Proyecto_x0020_EDDSoap">
+      <soap:address location="http://localhost/webServerNW/NavalwarService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Proyecto_x0020_EDDSoap12" binding="tns:Proyecto_x0020_EDDSoap12">
+      <soap12:address location="http://localhost/webServerNW/NavalwarService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

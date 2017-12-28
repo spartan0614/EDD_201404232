@@ -45,9 +45,19 @@ namespace GameService
             tree.CargaJuegos(path);
         }
 
+        //[WebMethod]
+        //public string ViewTree() {
+        //    return tree.ProcessGraphic();
+        //}
+
         [WebMethod]
         public void AddNewUser(string nickname, string password, string email, int conectado) {
             tree.Insertar(nickname, password, email, conectado);
+        }
+
+        [WebMethod]
+        public void DeleteUser(string nickname) {
+            tree.Eliminar(nickname);
         }
 
         [WebMethod]
@@ -71,7 +81,8 @@ namespace GameService
         }
 
         [WebMethod]
-        public void graphTree() {
+        public void graphTree()
+        {
             tree.ProcessGraphic();
         }
 
