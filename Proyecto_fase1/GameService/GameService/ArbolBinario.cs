@@ -89,6 +89,32 @@ namespace GameService
             return null;
         }
 
+        public void CargaUsuarios(string path){
+            using (var reader = new StreamReader(path)){
+                while (!reader.EndOfStream){
+                    var linea = reader.ReadLine();
+                    var valores = linea.Split(',');
+                    Insertar(valores[0], valores[1], valores[2], Int32.Parse(valores[3]));
+                }
+            }
+        }
+
+        public void CargaJuegos(string path){
+            if (this.raiz != null){
+                using (var reader = new StreamReader(path)){
+                    while (!reader.EndOfStream){
+                        var linea = reader.ReadLine();
+                        var valores = linea.Split(',');
+                        Usuario nodobase = Buscar(valores[0]);
+                        Usuario nodoOponente = Buscar(valores[1]);
+                        if ((nodobase != null) && (nodoOponente != null)){
+                            nodobase.juegos.Insertar(new Juego(valores[1], Int32.Parse(valores[2]), Int32.Parse(valores[3]), Int32.Parse(valores[4]), Int32.Parse(valores[5])));
+                        }
+                    }
+                }
+            }
+        }
+
         public void Insertar(string nickname, string password, string email, int conectado)
         {
             if (Buscar(nickname) == null)
