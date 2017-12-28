@@ -96,6 +96,9 @@
     <Content Include="Connected Services\webServerNW\GameClient.webServerNW.DeleteUserResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\webServerNW\GameClient.webServerNW.ViewTreeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\webServerNW\NavalwarService.disco" />
     <None Include="Connected Services\webServerNW\configuration91.svcinfo" />
     <None Include="Connected Services\webServerNW\configuration.svcinfo" />

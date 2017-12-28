@@ -30,6 +30,7 @@ namespace GameClient
                 txtNickname.Text = "";
                 txtPassword.Text = "";
                 txtCorreo.Text = "";
+                imgBinario.ImageUrl = servicio.ViewTree();
                 //imgBinario.ImageUrl = servicio.ViewTree();
             }
         } 
@@ -48,7 +49,7 @@ namespace GameClient
 
         protected void cargarUsuarios_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void altura_Click(object sender, EventArgs e)

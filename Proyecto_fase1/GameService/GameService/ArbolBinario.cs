@@ -314,17 +314,18 @@ namespace GameService
 
         }
 
-        public void ProcessGraphic()
+        public string ProcessGraphic()
         {
             if (this.raiz != null) {
-                var fileName = "Usuarios.txt";
+                var fileName = "C:\\Users\\Dinora\\Documents\\Dinora\\Diciembre\\EDD_201404232\\Proyecto_fase1\\GameService\\GameService\\images\\Usuarios.txt";
                 SaveToFile(fileName);
                 string path = Directory.GetCurrentDirectory();
                 GenerarGrafo(fileName, path);
 
-                //return "Usuarios.png";
+                string elArbol = "C:\\Users\\Dinora\\Documents\\Dinora\\Diciembre\\EDD_201404232\\Proyecto_fase1\\GameService\\GameService\\images\\Usuarios.png";
+                return elArbol;
             }
-            //return ""; 
+            return ""; 
         }
 
         void GenerarGrafo(string filename, string path)

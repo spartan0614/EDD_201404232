@@ -36,6 +36,13 @@ namespace GameClient.webServerNW {
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/NavalWar/UpFileGames", ReplyAction="*")]
         System.Threading.Tasks.Task<GameClient.webServerNW.UpFileGamesResponse> UpFileGamesAsync(GameClient.webServerNW.UpFileGamesRequest request);
         
+        // CODEGEN: Generating message contract since element name ViewTreeResult from namespace http://localhost/NavalWar is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/NavalWar/ViewTree", ReplyAction="*")]
+        GameClient.webServerNW.ViewTreeResponse ViewTree(GameClient.webServerNW.ViewTreeRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/NavalWar/ViewTree", ReplyAction="*")]
+        System.Threading.Tasks.Task<GameClient.webServerNW.ViewTreeResponse> ViewTreeAsync(GameClient.webServerNW.ViewTreeRequest request);
+        
         // CODEGEN: Generating message contract since element name nickname from namespace http://localhost/NavalWar is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/NavalWar/AddNewUser", ReplyAction="*")]
         GameClient.webServerNW.AddNewUserResponse AddNewUser(GameClient.webServerNW.AddNewUserRequest request);
@@ -279,6 +286,67 @@ namespace GameClient.webServerNW {
     public partial class UpFileGamesResponseBody {
         
         public UpFileGamesResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ViewTreeRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ViewTree", Namespace="http://localhost/NavalWar", Order=0)]
+        public GameClient.webServerNW.ViewTreeRequestBody Body;
+        
+        public ViewTreeRequest() {
+        }
+        
+        public ViewTreeRequest(GameClient.webServerNW.ViewTreeRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ViewTreeRequestBody {
+        
+        public ViewTreeRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ViewTreeResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ViewTreeResponse", Namespace="http://localhost/NavalWar", Order=0)]
+        public GameClient.webServerNW.ViewTreeResponseBody Body;
+        
+        public ViewTreeResponse() {
+        }
+        
+        public ViewTreeResponse(GameClient.webServerNW.ViewTreeResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://localhost/NavalWar")]
+    public partial class ViewTreeResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string ViewTreeResult;
+        
+        public ViewTreeResponseBody() {
+        }
+        
+        public ViewTreeResponseBody(string ViewTreeResult) {
+            this.ViewTreeResult = ViewTreeResult;
         }
     }
     
@@ -588,6 +656,29 @@ namespace GameClient.webServerNW {
             inValue.Body = new GameClient.webServerNW.UpFileGamesRequestBody();
             inValue.Body.path = path;
             return ((GameClient.webServerNW.ProyectoEDDSoap)(this)).UpFileGamesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GameClient.webServerNW.ViewTreeResponse GameClient.webServerNW.ProyectoEDDSoap.ViewTree(GameClient.webServerNW.ViewTreeRequest request) {
+            return base.Channel.ViewTree(request);
+        }
+        
+        public string ViewTree() {
+            GameClient.webServerNW.ViewTreeRequest inValue = new GameClient.webServerNW.ViewTreeRequest();
+            inValue.Body = new GameClient.webServerNW.ViewTreeRequestBody();
+            GameClient.webServerNW.ViewTreeResponse retVal = ((GameClient.webServerNW.ProyectoEDDSoap)(this)).ViewTree(inValue);
+            return retVal.Body.ViewTreeResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GameClient.webServerNW.ViewTreeResponse> GameClient.webServerNW.ProyectoEDDSoap.ViewTreeAsync(GameClient.webServerNW.ViewTreeRequest request) {
+            return base.Channel.ViewTreeAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GameClient.webServerNW.ViewTreeResponse> ViewTreeAsync() {
+            GameClient.webServerNW.ViewTreeRequest inValue = new GameClient.webServerNW.ViewTreeRequest();
+            inValue.Body = new GameClient.webServerNW.ViewTreeRequestBody();
+            return ((GameClient.webServerNW.ProyectoEDDSoap)(this)).ViewTreeAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

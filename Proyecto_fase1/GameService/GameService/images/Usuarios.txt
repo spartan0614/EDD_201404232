@@ -1,0 +1,10 @@
+digraph Usuarios{
+rankdir=TB;
+node [shape = record, style= filled, fillcolor=seashell2];
+
+nodoFernando[label="Nickname:Fernando \l Contraseña:123 \l Correo:123|<C1>"];
+nodoJose[label="Nickname:Jose \l Contraseña:789 \l Correo:789|<C1>"];
+nodoMaria[label="Nickname:Maria \l Contraseña:654 \l Correo:654"];
+nodoJose:C1->nodoMaria
+nodoFernando:C1->nodoJose
+}

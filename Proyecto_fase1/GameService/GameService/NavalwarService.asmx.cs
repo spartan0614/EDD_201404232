@@ -45,10 +45,11 @@ namespace GameService
             tree.CargaJuegos(path);
         }
 
-        //[WebMethod]
-        //public string ViewTree() {
-        //    return tree.ProcessGraphic();
-        //}
+        [WebMethod]
+        public string ViewTree()
+        {
+            return tree.ProcessGraphic();
+        }
 
         [WebMethod]
         public void AddNewUser(string nickname, string password, string email, int conectado) {
@@ -80,11 +81,11 @@ namespace GameService
             return tree.CantidadNodosRama();
         }
 
-        [WebMethod]
-        public void graphTree()
-        {
-            tree.ProcessGraphic();
-        }
+        //[WebMethod]
+        //public void graphTree()
+        //{
+        //    tree.ProcessGraphic();
+        //}
 
         [WebMethod]
         public bool IngresoUsuario(string nickname, string password) {

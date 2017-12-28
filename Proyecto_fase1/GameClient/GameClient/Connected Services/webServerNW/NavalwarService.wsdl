@@ -37,6 +37,16 @@
       <s:element name="UpFileGamesResponse">
         <s:complexType />
       </s:element>
+      <s:element name="ViewTree">
+        <s:complexType />
+      </s:element>
+      <s:element name="ViewTreeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ViewTreeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="AddNewUser">
         <s:complexType>
           <s:sequence>
@@ -141,6 +151,12 @@
   <wsdl:message name="UpFileGamesSoapOut">
     <wsdl:part name="parameters" element="tns:UpFileGamesResponse" />
   </wsdl:message>
+  <wsdl:message name="ViewTreeSoapIn">
+    <wsdl:part name="parameters" element="tns:ViewTree" />
+  </wsdl:message>
+  <wsdl:message name="ViewTreeSoapOut">
+    <wsdl:part name="parameters" element="tns:ViewTreeResponse" />
+  </wsdl:message>
   <wsdl:message name="AddNewUserSoapIn">
     <wsdl:part name="parameters" element="tns:AddNewUser" />
   </wsdl:message>
@@ -202,6 +218,10 @@
       <wsdl:input message="tns:UpFileGamesSoapIn" />
       <wsdl:output message="tns:UpFileGamesSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ViewTree">
+      <wsdl:input message="tns:ViewTreeSoapIn" />
+      <wsdl:output message="tns:ViewTreeSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="AddNewUser">
       <wsdl:input message="tns:AddNewUserSoapIn" />
       <wsdl:output message="tns:AddNewUserSoapOut" />
@@ -257,6 +277,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpFileGames">
       <soap:operation soapAction="http://localhost/NavalWar/UpFileGames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewTree">
+      <soap:operation soapAction="http://localhost/NavalWar/ViewTree" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -359,6 +388,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpFileGames">
       <soap12:operation soapAction="http://localhost/NavalWar/UpFileGames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewTree">
+      <soap12:operation soapAction="http://localhost/NavalWar/ViewTree" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
