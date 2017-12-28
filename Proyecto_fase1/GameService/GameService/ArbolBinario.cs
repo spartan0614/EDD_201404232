@@ -55,6 +55,7 @@ namespace GameService
             {
                 return ValidarUsuario(actual.derecha, nickname, password);
             }
+
             return null;
         }
 
@@ -89,30 +90,46 @@ namespace GameService
             return null;
         }
 
-        public void CargaUsuarios(string path){
-            using (var reader = new StreamReader(path)){
-                while (!reader.EndOfStream){
-                    var linea = reader.ReadLine();
-                    var valores = linea.Split(',');
-                    Insertar(valores[0], valores[1], valores[2], Int32.Parse(valores[3]));
+        public void CargaUsuarios(string path)
+        {
+            List<string[]> datos = takeData(path);
+            for (int n = 1; n < datos.Count; n++)
+            {
+                string[] row = datos[n];
+                Insertar(row[0], row[1], row[2], Int32.Parse(row[3]));
+            }
+
+        }
+
+        public void CargaJuegos(string path)
+        {
+            List<string[]> datos = takeData(path);
+            for (int n = 1; n < datos.Count; n++)
+            {
+                string[] row = datos[n];
+                Usuario nodeBase = Buscar(row[0]);
+                Usuario nodeOponente = Buscar(row[1]);
+                if ((nodeBase != null) && (nodeOponente != null))
+                {
+                    nodeBase.juegos.Insertar(new Juego(row[1], Int32.Parse(row[2]), Int32.Parse(row[3]), Int32.Parse(row[4]), Int32.Parse(row[5])));
                 }
             }
         }
 
-        public void CargaJuegos(string path){
-            if (this.raiz != null){
-                using (var reader = new StreamReader(path)){
-                    while (!reader.EndOfStream){
-                        var linea = reader.ReadLine();
-                        var valores = linea.Split(',');
-                        Usuario nodobase = Buscar(valores[0]);
-                        Usuario nodoOponente = Buscar(valores[1]);
-                        if ((nodobase != null) && (nodoOponente != null)){
-                            nodobase.juegos.Insertar(new Juego(valores[1], Int32.Parse(valores[2]), Int32.Parse(valores[3]), Int32.Parse(valores[4]), Int32.Parse(valores[5])));
-                        }
-                    }
+        List<string[]> takeData(string path)
+        {
+            List<string[]> parsedData = new List<string[]>();
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string line;
+                string[] row;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    row = line.Split(',');
+                    parsedData.Add(row);
                 }
             }
+            return parsedData;
         }
 
         public void Insertar(string nickname, string password, string email, int conectado)
