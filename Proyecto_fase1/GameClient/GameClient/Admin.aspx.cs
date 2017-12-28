@@ -13,5 +13,40 @@ namespace GameClient
         {
 
         }
+
+        protected void agregarUsuario_Click(object sender, EventArgs e) {
+
+        }
+
+        protected void eliminarUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cargarUsuarios_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void altura_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void niveles_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void hojas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ramas_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
